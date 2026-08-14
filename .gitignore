@@ -23,3 +23,12 @@ build/
 *.out
 *.app
 bin/
+
+#LaTeX
+*.aux
+*.log
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.out
+*.pdf

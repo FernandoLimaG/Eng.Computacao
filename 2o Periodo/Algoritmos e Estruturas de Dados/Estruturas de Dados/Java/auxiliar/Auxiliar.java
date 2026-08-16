@@ -25,10 +25,4 @@ public class Auxiliar
     }
 
     public static void opcaoInvalida(){ System.out.println("Opção inválida, tente novamente"); }
-
-    public static int menu(Scanner sc){
-        System.out.println("===== MENU PRINCIPAL =====");
-        System.out.print("1. Inserir\n2. Pesquisar\n3. Imprimir\n0. Sair\nEscolha: ");
-        return Integer.parseInt(sc.nextLine());
-    }
 }

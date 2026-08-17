@@ -9,7 +9,8 @@ import lineares.fila.*;
 import lineares.pilha.*;
 
 //1.2.: Flexiveis 
-//import flexiveis.lista.*;
+import flexiveis.lista.simples.*;
+//import flexiveis.lista.dupla.*;
 import flexiveis.fila.*;
 import flexiveis.pilha.*;
 
@@ -87,23 +88,28 @@ public class Menu
     {
         while(true){
             System.out.println("===== ESTRUTURAS FLEXÍVEIS =====");
-            int op = Auxiliar.lerInt("1. Lista\n2. Pilha\n3. Fila\n0. Sair\nEscolha: ", sc);
+            int op = Auxiliar.lerInt("1. Lista Simples\n2. Lista Dupla\n3. Pilha\n4. Fila\n0. Sair\nEscolha: ", sc);
             System.out.println();
             if(op == 0) break;
             switch(op){
                 case 1:{
+                           ListaSimples l = new ListaSimples();
+                           listaSimples(l, sc);
+                           break;
+                }
+                case 2:{
                            /*
                            ListaFlex l = new ListaFlex();
                            listaflex(l, sc);
                            */
                            break;
                 }
-                case 2:{
+                case 3:{
                            PilhaFlex p = new PilhaFlex();
                            pilhaflex(p, sc);
                            break;
                 }
-                case 3:{
+                case 4:{
                            FilaFlex f = new FilaFlex();
                            filaflex(f, sc);
                            break;
@@ -333,6 +339,66 @@ public class Menu
     }
     // ======================== FIM: Estruturas Lineares ========================
 
+    public static void listaSimples(ListaSimples l, Scanner sc)
+    {
+        while(true){
+            int op = metodosLista(sc);
+            System.out.println();
+            if(op == 0) break;
+
+            try{
+                switch(op){
+                    case 1:{
+                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
+                               l.inserirInicio(x);
+                               break;
+                    }
+                    case 2:{
+                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
+                               l.inserirFim(x);
+                               break;
+                    }
+                    case 3:{
+                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
+                               int pos = Auxiliar.lerInt("Posição (índice) para inserir: ", sc);
+                               l.inserirPos(x, pos);
+                               break;
+                    }
+                    case 4:{
+                               System.out.println("[REMOVIDO]: " + l.removerInicio());
+                               break;
+                    }
+                    case 5:{
+                               System.out.println("[REMOVIDO]: " + l.removerFim());
+                               break;
+                    }
+                    case 6:{
+                               int pos = Auxiliar.lerInt("Posição (índice) para remover: ", sc);
+                               System.out.println("[REMOVIDO]: " + l.removerPos(pos));
+                               break;
+                    }
+                    case 7:{
+                               int x = Auxiliar.lerInt("Elemento para pesquisar: ", sc);
+                               if(l.pesquisar(x)){ System.out.println("Elemento encontrado"); }
+                               else{ System.out.println("Elemento não encontrado"); }
+                               break;
+                    }
+                    case 8:{
+                               l.imprimir();
+                               break;
+                    }
+                    default:{
+                                Auxiliar.opcaoInvalida();
+                                break;
+                    }
+                }
+            }catch(Exception e){ System.out.println(e.getMessage()); }
+            System.out.println();
+        }
+        System.out.println("===== FIM: Lista Simplesmente Encadeada =====");
+    }
+    // ======================== FIM: Estruturas Flexiveis ========================
+    
     public static void arvores(Scanner sc)
     {
         while(true){

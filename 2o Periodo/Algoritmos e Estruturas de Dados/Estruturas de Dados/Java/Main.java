@@ -17,7 +17,7 @@ public class Main
                 case 1 -> Menu.lineares(sc);
                 case 2 -> Menu.flexiveis(sc);
                 case 3 -> Menu.arvores(sc);
-                //case 4 -> Menu.abelas(sc);
+                case 4 -> Menu.tabelas(sc);
                 default -> Auxiliar.opcaoInvalida();
             }
         }

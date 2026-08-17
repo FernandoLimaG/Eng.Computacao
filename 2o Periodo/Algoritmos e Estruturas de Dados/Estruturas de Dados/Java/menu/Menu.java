@@ -10,18 +10,17 @@ import lineares.pilha.*;
 
 //1.2.: Flexiveis 
 //import flexiveis.lista.*;
-//import flexiveis.fila.*;
+import flexiveis.fila.*;
 import flexiveis.pilha.*;
 
 //1.3.: Arvores
 import arvores.abp.*;
 import arvores.trie.*;
 
-/*1.4.: Tabelas
+//1.4.: Tabelas
 import tabelas.reserva.*;
 import tabelas.rehash.*;
-import tabelas.indireta.*;
-*/
+//import tabelas.indireta.*;
 
 //2. Auxiliares
 import auxiliar.*;
@@ -105,10 +104,8 @@ public class Menu
                            break;
                 }
                 case 3:{
-                           /*
                            FilaFlex f = new FilaFlex();
                            filaflex(f, sc);
-                           */
                            break;
                 }
                 default:{
@@ -216,6 +213,45 @@ public class Menu
             System.out.println();
         }
         System.out.println("===== FIM: Pilha Flexível =====");
+    }
+
+    public static void filaflex(FilaFlex f, Scanner sc)
+    {
+        while(true){
+            int op = metodos(sc);
+            System.out.println();
+            if(op == 0) break;
+
+            try{
+                switch(op){
+                    case 1:{
+                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
+                               f.inserir(x);
+                               break;
+                    }
+                    case 2:{
+                               System.out.println("[REMOVIDO]: " + f.remover());
+                               break;
+                    }
+                    case 3:{
+                               int x = Auxiliar.lerInt("Elemento para pesquisar: ", sc);
+                               if(f.pesquisar(x)){ System.out.println("Elemento encontrado"); }
+                               else{ System.out.println("Elemento não encontrado"); }
+                               break;
+                    }
+                    case 4:{
+                               f.imprimir();
+                               break;
+                    }
+                    default:{
+                                Auxiliar.opcaoInvalida();
+                                break;
+                    }
+                }
+            }catch(Exception e){ System.out.println(e.getMessage()); }
+            System.out.println();
+        }
+        System.out.println("===== FIM: Fila Flexível =====");
     }
 
     public static void pilha(Pilha p, Scanner sc)
@@ -404,4 +440,117 @@ public class Menu
         System.out.println("===== FIM: Arvore TRIE =====");
     }
     // ======================== FIM: ÁRVORES ========================
+
+    public static void tabelas(Scanner sc)
+    {
+        while(true){
+            System.out.println("===== TABELAS =====");
+            int op = Auxiliar.lerInt("1. Hash-Reserva\n2. Hash-Rehash\n3. Indiretas\n0. Sair\nEscolha: ", sc);
+            System.out.println();
+            if(op == 0) break;
+            switch(op){
+                case 1:{
+                           Reserva t = new Reserva();
+                           reserva(t, sc);
+                           break;
+                }
+                case 2:{
+                           Rehash t = new Rehash();
+                           rehash(t, sc);
+                           break;
+                } 
+                case 3:{
+                           System.out.println("[INOP]");
+                           break;
+                } 
+                default:{
+                            Auxiliar.opcaoInvalida();
+                            break;
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void reserva(Reserva t, Scanner sc)
+    {
+        while(true){
+            int op = metodos(sc);
+            System.out.println();
+            if(op == 0) break;
+            try{
+                switch(op){
+                    case 1:{
+                               String s = Auxiliar.lerString("Nome para inserir: ", sc);
+                               t.inserir(s);
+                               break;
+                    }
+                    case 2: {
+                                String s = Auxiliar.lerString("Nome para remover: ", sc);
+                                s = t.remover(s);
+                                if(s == null) System.out.println("Nome não encontrado");
+                                else  System.out.println("[REMOVIDO]: " + s);
+                                break;
+                    }
+                    case 3:{
+                               String s = Auxiliar.lerString("Nome para pesquisar: ", sc);
+                               if(t.pesquisar(s) > -1){ System.out.println("Nome encontrado"); }
+                               else{ System.out.println("Nome não encontrado"); }
+                               break;
+                    }
+                    case 4:{
+                               t.imprimir();
+                               break;
+                    }
+                    default:{
+                                Auxiliar.opcaoInvalida();
+                                break;
+                    }
+                }
+            }catch(Exception e){ System.out.println(e.getMessage()); }
+            System.out.println();
+        }
+        System.out.println("===== FIM: Tabela Hash c/ Reserva =====");
+    }
+
+    public static void rehash(Rehash t, Scanner sc)
+    {
+        while(true){
+            int op = metodos(sc);
+            System.out.println();
+            if(op == 0) break;
+            try{
+                switch(op){
+                    case 1:{
+                               String s = Auxiliar.lerString("Nome para inserir: ", sc);
+                               t.inserir(s);
+                               break;
+                    }
+                    case 2: {
+                                String s = Auxiliar.lerString("Nome para remover: ", sc);
+                                s = t.remover(s);
+                                if(s == null) System.out.println("Nome não encontrado");
+                                else  System.out.println("[REMOVIDO]: " + s);
+                                break;
+                    }
+                    case 3:{
+                               String s = Auxiliar.lerString("Nome para pesquisar: ", sc);
+                               if(t.pesquisar(s) > -1){ System.out.println("Nome encontrado"); }
+                               else{ System.out.println("Nome não encontrado"); }
+                               break;
+                    }
+                    case 4:{
+                               t.imprimir();
+                               break;
+                    }
+                    default:{
+                                Auxiliar.opcaoInvalida();
+                                break;
+                    }
+                }
+            }catch(Exception e){ System.out.println(e.getMessage()); }
+            System.out.println();
+        }
+        System.out.println("===== FIM: Tabela Hash c/ Rehash =====");
+    }
 }

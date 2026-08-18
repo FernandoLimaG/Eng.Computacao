@@ -121,10 +121,10 @@ public class ListaSimples
     }
 
     private void imprimir(Celula i){
-    if(i != null){
-        System.out.print(i.elemento);
-        if(i != ultimo) System.out.print(", ");
-        imprimir(i.prox);
+        if(i != null){
+            System.out.print(i.elemento);
+            if(i != ultimo) System.out.print(", ");
+            imprimir(i.prox);
+        }
     }
-}
 }

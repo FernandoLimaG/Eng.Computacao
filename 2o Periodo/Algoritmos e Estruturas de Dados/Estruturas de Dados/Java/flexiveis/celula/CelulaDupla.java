@@ -2,9 +2,9 @@ package flexiveis.celula;
 
 public class CelulaDupla
 {
-    int elemento;
-    CelulaDupla prox;
-    CelulaDupla ant;
+    public int elemento;
+    public CelulaDupla prox;
+    public CelulaDupla ant;
 
     public CelulaDupla(int elemento){
         this.elemento = elemento;

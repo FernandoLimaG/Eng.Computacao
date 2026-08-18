@@ -10,7 +10,7 @@ import lineares.pilha.*;
 
 //1.2.: Flexiveis 
 import flexiveis.lista.simples.*;
-//import flexiveis.lista.dupla.*;
+import flexiveis.lista.dupla.*;
 import flexiveis.fila.*;
 import flexiveis.pilha.*;
 
@@ -21,7 +21,7 @@ import arvores.trie.*;
 //1.4.: Tabelas
 import tabelas.reserva.*;
 import tabelas.rehash.*;
-//import tabelas.indireta.*;
+import tabelas.indireta.simples.*;
 
 //2. Auxiliares
 import auxiliar.*;
@@ -98,10 +98,8 @@ public class Menu
                            break;
                 }
                 case 2:{
-                           /*
-                           ListaFlex l = new ListaFlex();
-                           listaflex(l, sc);
-                           */
+                           ListaDupla l = new ListaDupla();
+                           listaDupla(l, sc);
                            break;
                 }
                 case 3:{
@@ -122,6 +120,74 @@ public class Menu
             System.out.println();
         }
     }
+
+    public static void arvores(Scanner sc)
+    {
+        while(true){
+            System.out.println("===== ÁRVORES =====");
+            int op = Auxiliar.lerInt("1. Abp\n2. Avl\n3. Alvinegra\n4. Trie\n0. Sair\nEscolha: ", sc);
+            System.out.println();
+            if(op == 0) break;
+            switch(op){
+                case 1:{
+                           Abp a = new Abp();
+                           abp(a, sc);
+                           break;
+                }
+                case 2:{
+                           System.out.println("[INOP]");
+                           break;
+                } 
+                case 3:{
+                           System.out.println("[INOP]");
+                           break;
+                } 
+                case 4:{
+                           Trie a = new Trie();
+                           trie(a, sc);
+                           break;
+                }
+                default:{
+                            Auxiliar.opcaoInvalida();
+                            break;
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void tabelas(Scanner sc)
+    {
+        while(true){
+            System.out.println("===== TABELAS =====");
+            int op = Auxiliar.lerInt("1. Hash-Reserva\n2. Hash-Rehash\n3. Indiretas\n0. Sair\nEscolha: ", sc);
+            System.out.println();
+            if(op == 0) break;
+            switch(op){
+                case 1:{
+                           Reserva t = new Reserva();
+                           reserva(t, sc);
+                           break;
+                }
+                case 2:{
+                           Rehash t = new Rehash();
+                           rehash(t, sc);
+                           break;
+                } 
+                case 3:{
+                           TabelaSimples t = new TabelaSimples();
+                           tabelaSimples(t, sc);
+                           break;
+                } 
+                default:{
+                            Auxiliar.opcaoInvalida();
+                            break;
+                }
+            }
+            System.out.println();
+        }
+    }
+    // ======================== FIM: Menu Geral ========================
 
     public static void lista(Lista l, Scanner sc)
     {
@@ -180,84 +246,6 @@ public class Menu
             System.out.println();
         }
         System.out.println("===== FIM: Lista Estática =====");
-    }
-
-    public static void pilhaflex(PilhaFlex p, Scanner sc)
-    {
-        while(true){
-            int op = metodos(sc);
-            System.out.println();
-            if(op == 0) break;
-
-            try{
-                switch(op){
-                    case 1:{
-                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
-                               p.inserir(x);
-                               break;
-                    }
-                    case 2:{
-                               System.out.println("[REMOVIDO]: " + p.remover());
-                               break;
-                    }
-                    case 3:{
-                               int x = Auxiliar.lerInt("Elemento para pesquisar: ", sc);
-                               if(p.pesquisar(x)){ System.out.println("Elemento encontrado"); }
-                               else{ System.out.println("Elemento não encontrado"); }
-                               break;
-                    }
-                    case 4:{
-                               p.imprimir();
-                               break;
-                    }
-                    default:{
-                                Auxiliar.opcaoInvalida();
-                                break;
-                    }
-                }
-            }catch(Exception e){ System.out.println(e.getMessage()); }
-            System.out.println();
-        }
-        System.out.println("===== FIM: Pilha Flexível =====");
-    }
-
-    public static void filaflex(FilaFlex f, Scanner sc)
-    {
-        while(true){
-            int op = metodos(sc);
-            System.out.println();
-            if(op == 0) break;
-
-            try{
-                switch(op){
-                    case 1:{
-                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
-                               f.inserir(x);
-                               break;
-                    }
-                    case 2:{
-                               System.out.println("[REMOVIDO]: " + f.remover());
-                               break;
-                    }
-                    case 3:{
-                               int x = Auxiliar.lerInt("Elemento para pesquisar: ", sc);
-                               if(f.pesquisar(x)){ System.out.println("Elemento encontrado"); }
-                               else{ System.out.println("Elemento não encontrado"); }
-                               break;
-                    }
-                    case 4:{
-                               f.imprimir();
-                               break;
-                    }
-                    default:{
-                                Auxiliar.opcaoInvalida();
-                                break;
-                    }
-                }
-            }catch(Exception e){ System.out.println(e.getMessage()); }
-            System.out.println();
-        }
-        System.out.println("===== FIM: Fila Flexível =====");
     }
 
     public static void pilha(Pilha p, Scanner sc)
@@ -339,6 +327,85 @@ public class Menu
     }
     // ======================== FIM: Estruturas Lineares ========================
 
+    public static void pilhaflex(PilhaFlex p, Scanner sc)
+    {
+        while(true){
+            int op = metodos(sc);
+            System.out.println();
+            if(op == 0) break;
+
+            try{
+                switch(op){
+                    case 1:{
+                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
+                               p.inserir(x);
+                               break;
+                    }
+                    case 2:{
+                               System.out.println("[REMOVIDO]: " + p.remover());
+                               break;
+                    }
+                    case 3:{
+                               int x = Auxiliar.lerInt("Elemento para pesquisar: ", sc);
+                               if(p.pesquisar(x)){ System.out.println("Elemento encontrado"); }
+                               else{ System.out.println("Elemento não encontrado"); }
+                               break;
+                    }
+                    case 4:{
+                               p.imprimir();
+                               break;
+                    }
+                    default:{
+                                Auxiliar.opcaoInvalida();
+                                break;
+                    }
+                }
+            }catch(Exception e){ System.out.println(e.getMessage()); }
+            System.out.println();
+        }
+        System.out.println("===== FIM: Pilha Flexível =====");
+    }
+
+    public static void filaflex(FilaFlex f, Scanner sc)
+    {
+        while(true){
+            int op = metodos(sc);
+            System.out.println();
+            if(op == 0) break;
+
+            try{
+                switch(op){
+                    case 1:{
+                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
+                               f.inserir(x);
+                               break;
+                    }
+                    case 2:{
+                               System.out.println("[REMOVIDO]: " + f.remover());
+                               break;
+                    }
+                    case 3:{
+                               int x = Auxiliar.lerInt("Elemento para pesquisar: ", sc);
+                               if(f.pesquisar(x)){ System.out.println("Elemento encontrado"); }
+                               else{ System.out.println("Elemento não encontrado"); }
+                               break;
+                    }
+                    case 4:{
+                               f.imprimir();
+                               break;
+                    }
+                    default:{
+                                Auxiliar.opcaoInvalida();
+                                break;
+                    }
+                }
+            }catch(Exception e){ System.out.println(e.getMessage()); }
+            System.out.println();
+        }
+        System.out.println("===== FIM: Fila Flexível =====");
+    }
+
+
     public static void listaSimples(ListaSimples l, Scanner sc)
     {
         while(true){
@@ -397,43 +464,67 @@ public class Menu
         }
         System.out.println("===== FIM: Lista Simplesmente Encadeada =====");
     }
-    // ======================== FIM: Estruturas Flexiveis ========================
-    
-    public static void arvores(Scanner sc)
+
+    public static void listaDupla(ListaDupla l, Scanner sc)
     {
         while(true){
-            System.out.println("===== ÁRVORES =====");
-            int op = Auxiliar.lerInt("1. Abp\n2. Avl\n3. Alvinegra\n4. Trie\n0. Sair\nEscolha: ", sc);
+            int op = metodosLista(sc);
             System.out.println();
             if(op == 0) break;
-            switch(op){
-                case 1:{
-                           Abp a = new Abp();
-                           abp(a, sc);
-                           break;
+
+            try{
+                switch(op){
+                    case 1:{
+                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
+                               l.inserirInicio(x);
+                               break;
+                    }
+                    case 2:{
+                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
+                               l.inserirFim(x);
+                               break;
+                    }
+                    case 3:{
+                               int x = Auxiliar.lerInt("Elemento para inserir: ", sc);
+                               int pos = Auxiliar.lerInt("Posição (índice) para inserir: ", sc);
+                               l.inserirPos(x, pos);
+                               break;
+                    }
+                    case 4:{
+                               System.out.println("[REMOVIDO]: " + l.removerInicio());
+                               break;
+                    }
+                    case 5:{
+                               System.out.println("[REMOVIDO]: " + l.removerFim());
+                               break;
+                    }
+                    case 6:{
+                               int pos = Auxiliar.lerInt("Posição (índice) para remover: ", sc);
+                               System.out.println("[REMOVIDO]: " + l.removerPos(pos));
+                               break;
+                    }
+                    case 7:{
+                               int x = Auxiliar.lerInt("Elemento para pesquisar: ", sc);
+                               if(l.pesquisar(x)){ System.out.println("Elemento encontrado"); }
+                               else{ System.out.println("Elemento não encontrado"); }
+                               break;
+                    }
+                    case 8:{
+                               l.imprimir();
+                               break;
+                    }
+                    default:{
+                                Auxiliar.opcaoInvalida();
+                                break;
+                    }
                 }
-                case 2:{
-                           System.out.println("[INOP]");
-                           break;
-                } 
-                case 3:{
-                           System.out.println("[INOP]");
-                           break;
-                } 
-                case 4:{
-                           Trie a = new Trie();
-                           trie(a, sc);
-                           break;
-                }
-                default:{
-                            Auxiliar.opcaoInvalida();
-                            break;
-                }
-            }
+            }catch(Exception e){ System.out.println(e.getMessage()); }
             System.out.println();
         }
+        System.out.println("===== FIM: Lista Duplamente Encadeada =====");
     }
-
+    // ======================== FIM: Estruturas Flexiveis ========================
+    
     public static void abp(Abp a, Scanner sc)
     {
         while(true){
@@ -506,37 +597,6 @@ public class Menu
         System.out.println("===== FIM: Arvore TRIE =====");
     }
     // ======================== FIM: ÁRVORES ========================
-
-    public static void tabelas(Scanner sc)
-    {
-        while(true){
-            System.out.println("===== TABELAS =====");
-            int op = Auxiliar.lerInt("1. Hash-Reserva\n2. Hash-Rehash\n3. Indiretas\n0. Sair\nEscolha: ", sc);
-            System.out.println();
-            if(op == 0) break;
-            switch(op){
-                case 1:{
-                           Reserva t = new Reserva();
-                           reserva(t, sc);
-                           break;
-                }
-                case 2:{
-                           Rehash t = new Rehash();
-                           rehash(t, sc);
-                           break;
-                } 
-                case 3:{
-                           System.out.println("[INOP]");
-                           break;
-                } 
-                default:{
-                            Auxiliar.opcaoInvalida();
-                            break;
-                }
-            }
-            System.out.println();
-        }
-    }
 
     public static void reserva(Reserva t, Scanner sc)
     {
@@ -618,5 +678,46 @@ public class Menu
             System.out.println();
         }
         System.out.println("===== FIM: Tabela Hash c/ Rehash =====");
+    }
+
+    public static void tabelaSimples(TabelaSimples t, Scanner sc)
+    {
+        while(true){
+            int op = metodos(sc);
+            System.out.println();
+            if(op == 0) break;
+            try{
+                switch(op){
+                    case 1:{
+                               String s = Auxiliar.lerString("Nome para inserir: ", sc);
+                               t.inserir(s);
+                               break;
+                    }
+                    case 2: {
+                                String s = Auxiliar.lerString("Nome para remover: ", sc);
+                                s = t.remover(s);
+                                if(s == null) System.out.println("Nome não encontrado");
+                                else  System.out.println("[REMOVIDO]: " + s);
+                                break;
+                    }
+                    case 3:{
+                               String s = Auxiliar.lerString("Nome para pesquisar: ", sc);
+                               if(t.pesquisar(s)){ System.out.println("Nome encontrado"); }
+                               else{ System.out.println("Nome não encontrado"); }
+                               break;
+                    }
+                    case 4:{
+                               t.imprimir();
+                               break;
+                    }
+                    default:{
+                                Auxiliar.opcaoInvalida();
+                                break;
+                    }
+                }
+            }catch(Exception e){ System.out.println(e.getMessage()); }
+            System.out.println();
+        }
+        System.out.println("===== FIM: Tabela Hash indireta c/ Lista Simples =====");
     }
 }

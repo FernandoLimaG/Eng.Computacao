@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
-#include "../auxiliar/auxiliar.h"
+#include "../include/auxiliar.h"
 
 int* create_int_arr(int n)
 {

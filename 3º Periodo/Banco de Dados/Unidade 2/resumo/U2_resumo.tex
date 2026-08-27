@@ -1,0 +1,176 @@
+\documentclass[12pt,a4paper]{article}
+
+\title{Unidade II: Modelagem de Dados}
+\author{Fernando de Lima Gonçalves}
+\date{\today}
+
+%\overfullrule=5pt
+
+\usepackage{graphicx}
+
+\begin{document}
+\maketitle
+
+\section{Conceitos}
+\begin{description}
+    \item[\textbf{Modelo de Dados}:] 
+        \sloppy é uma coleção de ferramentas conceituais para descrição dos dados e  
+        seus relacionamentos, restrições de consistência e semântica.
+    \item[\textbf{Modelagem de Dados}:] método de análise que, a partir de fatos relevates a um contexto de negócio, 
+        determina a perspectiva dos dados, permitindo organizá-los em estruturas bem definidas e estabelecer regras de dependência.
+    \item[\textbf{Modelos de BD}:]\hfill
+        \begin{itemize}
+            \item Hierárquico
+            \item Rede
+            \item Relacional
+            \item Pós-Relacionais
+            \item Orientados a Objeto
+        \end{itemize}
+\end{description}
+
+\section{Modelo de Entidades-Relacionamentos}
+\begin{itemize}
+    \item O Modelo E-R é um tipo de \textit{Modelo Conceitual} baseado na percepção do mundo real.
+    \item O Modelo E-R é uma forma de representar os requisitos funcionais levantados durante a fase de análise.
+    \item O Modelo E-R possui grande capacidade semântica, facilitando a compreensão pelo usuário leigo e a validação dos dados de aplicação a ser modelada.
+\end{itemize}
+
+\subsection{Entidades}
+\begin{itemize}
+    \item Objetos do mundo real como: \textit{\textbf{Clientes, Funcionários, Produtos, etc.}}
+    \item Estruturas abstratas como: \textit{\textbf{Nota fiscal, histórico escolas, extratos, etc.}}
+    \item A entidade é representada por um \textbf{\textit{retângulo nomeado}} substantivo que designa todo um conjunto de instâncias similares como:\par Pedro e Paulo são instâncias da Entidade \textit{\textbf{Cliente}}
+\end{itemize}
+
+\subsubsection{Atributos}
+\begin{itemize}
+    \item Elementos de dados que identificam e descrevem Entidades
+        \begin{itemize}
+            \item \textbf{Ex:} Fornecedor = cod-fornecedor, nome, CNPJ, etc.
+        \end{itemize}
+    \item Dado que é assoociado a cada ocorrência de uma entidade ou relacionamento
+    \item É representado por uma \textbf{\textit{elipse nomeada}}
+    \item Podem ser de vários tipos:
+        \begin{description}
+            \item[\textbf{Simples:}] indivisíveis como: CPF, preço, altura, etc.
+            \item[\textbf{Composto:}] divisíveis em subpartes menores, independentes e que podem formar uma hierarquia.
+                \begin{itemize}
+                    \item \textbf{Ex:} Cód. do País + Cód. do Estado + Número de Telefone
+                \end{itemize}
+        \end{description}
+\end{itemize}
+
+\subsubsection{Tipos de Atributos}
+\begin{description}
+    \item[\textbf{Monovalorados:}]
+        possuem um único valor para uma dada entidade.
+        \begin{itemize}\item \textbf{Ex:} CPF, nome, altura e peso de uma pessoa.\end{itemize}
+    \item[\textbf{Multivalorados:}]
+        múltiplos valores para uma dada entidade, representado por uma \textit\textbf{elipse dupla}
+        \begin{itemize}
+            \item \textbf{Ex:} Telefones e Endereços de fornecedores.
+        \end{itemize}
+    \item[\textbf{Derivados:}] computados a partir de outros atributos ou entidades. Representado por uma \textbf{\textit{elipse pontilhada}}
+        \begin{itemize}
+            \item \textbf{Ex:} Idade do Aluno, Índice de Massa Corporal (IMC), Total da nota Fiscal.
+        \end{itemize}
+\end{description}
+
+\newpage % Quebra de página -> Manter formatação
+
+\subsubsection{Atributo Chave}
+
+\begin{itemize}
+    \item Atributos cujos valores são distintos nas ocorrências da entidade.
+    \item É uma restrição de unicidade (exclusividade).
+    \item Identificador da entidade
+        \begin{itemize}
+            \item \textbf{Ex:} CPF de pessoa, Código do voo, CNPJ da empresa
+        \end{itemize}
+    \item Uma entidade pode ter mais de um atributo chave
+        \begin{itemize}
+            \item \textbf{Ex:} CPF e número de matrícula do Aluno
+        \end{itemize}
+    \item Chave composta: quando vários atributos formam uma chave
+        \begin{itemize}
+            \item número de nota fiscal + número do item
+            \item Número da agência + número da conta
+        \end{itemize}
+\end{itemize}
+
+\subsection{Relacionamentos}
+
+\subsubsection{Cardinalidade}
+
+\begin{itemize}
+    \item
+        Associação entre uma ou várias entidades com determinado significado.
+    \item
+        Conjunto de associações entre ocorreências de entidades representados por um \textit{\textbf{losango nomeado}}
+    \item \begin{description}
+            \item[\textbf{Cardinalidade:}] 
+                propriedade do relacionamento que expressa o nú\-me\-ro de ocorrências de uma entidade que participa do relacionamento com outra(s) entidade(s).
+                \begin{itemize}
+                    \item \textbf{Um-para-Um}: Técnico e Time
+                    \item \textbf{Um-para-Muitos}: Proprietário e Veículo
+                    \item \textbf{Muitos-para-Um}: Paciente e Médico, Professor e Aluno
+                \end{itemize}
+     \end{description}
+     \item \begin{description}
+             \item[\textbf{Totalidade:}]: é uma propriedade que especifica se a existência de uma entidade depende de seu relationamento com outra entidade.
+                 \begin{itemize}
+                     \item pode ser \textbf{parcial} \textit{(opcional)} ou \textbf{total} \textit{obrigatório}.
+                     \item \textbf{Ex:} Sócio e Dependente
+                 \end{itemize}
+         \end{description}
+     \item É fundamental consultar o usuário sobre as regras de negócio para as \textit{cardinalidades} e \textit{totalidade}.
+\end{itemize}
+
+\newpage
+
+\subsubsection{Relacionamentos Recursivos}
+\begin{itemize}
+    \item
+        Uma ocorrência de uma entidade se relaciona com outra(s) corrência(s) da mesma entidade.
+    \item 
+        A mesma entidade participa mais de uma vez em um tipo de relacionamento em \textbf{papéis} diferentes
+        \begin{itemize}
+            \item
+                \textbf{Ex:} Uma disciplina tem um ou vários pré-requisitos de outras disciplinas, uma música pode possuir várias versões que também são músicas.
+        \end{itemize}
+\end{itemize}
+
+\subsection{Conceitos Avançados do M.E.R}
+\begin{itemize}
+    \item \textbf{Entidade forte e Entidade fraca}
+    \item \textbf{Atributos de Relacionamento}
+    \item \textbf{Relacionamentos Binários e Ternários}
+    \item \textbf{M.E.R. Estendido: Generalizações e Especialização}
+\end{itemize}
+
+\subsubsection{Entidades Fracas}
+\begin{itemize}
+    \item Tipos de entidade que não têm chave própria
+    \item As instâncias são identificadas por meio do relacionamento com entidades de outro tipo (identificador), juntamento com os valores de alguns atributos (chave parcial)
+    \item Precisa da entidade forte para definis sua identidade
+    \item Representada por um \textbf{Retângulo Duplo}
+\end{itemize}
+
+\subsection{Grau de Relacionamento: Binários e Ternários}
+\begin{itemize}
+    \item
+        Número de tipos de entidades participantes de um tipo de re\-la\-cio\-na\-men\-to.
+    \item
+        Na maioria das vezes, os relacionamentos são \textbf{binários} (grau 2).
+    \item 
+        As entidades participantes atuam com \textbf{\textit{papel}} determinado no relacionamento.
+\end{itemize}
+
+% Continuar descrição + inclusão de imagens
+
+\subsection{MER Estendido: Generalização e Especialização}
+\begin{description}
+    \item[\textbf{Generalização}]: Processo de definição de entidade genérica.
+\end{description}
+
+\end{document}

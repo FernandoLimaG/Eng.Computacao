@@ -1,12 +1,16 @@
 \documentclass[12pt,a4paper]{article}
 
+% Pacote para exibição de imagem
+\usepackage{graphicx}
+
+% Onde buscar imagem
+\graphicspath{{./img/}}
+
 \title{Unidade II: Modelagem de Dados}
 \author{Fernando de Lima Gonçalves}
 \date{\today}
 
 %\overfullrule=5pt
-
-\usepackage{graphicx}
 
 \begin{document}
 \maketitle
@@ -39,7 +43,7 @@
 \begin{itemize}
     \item Objetos do mundo real como: \textit{\textbf{Clientes, Funcionários, Produtos, etc.}}
     \item Estruturas abstratas como: \textit{\textbf{Nota fiscal, histórico escolas, extratos, etc.}}
-    \item A entidade é representada por um \textbf{\textit{retângulo nomeado}} substantivo que designa todo um conjunto de instâncias similares como:\par Pedro e Paulo são instâncias da Entidade \textit{\textbf{Cliente}}
+    \item A entidade é representada por um \textbf{\textit{\underline{retângulo nomeado}}} substantivo que designa todo um conjunto de instâncias similares como:\par Pedro e Paulo são instâncias da Entidade \textit{\textbf{Cliente}}
 \end{itemize}
 
 \subsubsection{Atributos}
@@ -49,7 +53,7 @@
             \item \textbf{Ex:} Fornecedor = cod-fornecedor, nome, CNPJ, etc.
         \end{itemize}
     \item Dado que é assoociado a cada ocorrência de uma entidade ou relacionamento
-    \item É representado por uma \textbf{\textit{elipse nomeada}}
+    \item É representado por uma \textbf{\textit{\underline{elipse nomeada}}}
     \item Podem ser de vários tipos:
         \begin{description}
             \item[\textbf{Simples:}] indivisíveis como: CPF, preço, altura, etc.
@@ -66,11 +70,11 @@
         possuem um único valor para uma dada entidade.
         \begin{itemize}\item \textbf{Ex:} CPF, nome, altura e peso de uma pessoa.\end{itemize}
     \item[\textbf{Multivalorados:}]
-        múltiplos valores para uma dada entidade, representado por uma \textit\textbf{elipse dupla}
+        múltiplos valores para uma dada entidade, representado por uma \textit{\textbf{\underline{elipse dupla}}}
         \begin{itemize}
             \item \textbf{Ex:} Telefones e Endereços de fornecedores.
         \end{itemize}
-    \item[\textbf{Derivados:}] computados a partir de outros atributos ou entidades. Representado por uma \textbf{\textit{elipse pontilhada}}
+    \item[\textbf{Derivados:}] computados a partir de outros atributos ou entidades. Representado por uma \textbf{\textit{\underline{elipse pontilhada}}}
         \begin{itemize}
             \item \textbf{Ex:} Idade do Aluno, Índice de Massa Corporal (IMC), Total da nota Fiscal.
         \end{itemize}
@@ -84,6 +88,7 @@
     \item Atributos cujos valores são distintos nas ocorrências da entidade.
     \item É uma restrição de unicidade (exclusividade).
     \item Identificador da entidade
+    \item É representado por uma \textbf{\textit{\underline{elipse nomeada de texto sublinhado}}}
         \begin{itemize}
             \item \textbf{Ex:} CPF de pessoa, Código do voo, CNPJ da empresa
         \end{itemize}
@@ -106,14 +111,15 @@
     \item
         Associação entre uma ou várias entidades com determinado significado.
     \item
-        Conjunto de associações entre ocorreências de entidades representados por um \textit{\textbf{losango nomeado}}
+        Conjunto de associações entre ocorreências de entidades representados por um \textit{\textbf{\underline{losango nomeado}}}
     \item \begin{description}
             \item[\textbf{Cardinalidade:}] 
                 propriedade do relacionamento que expressa o nú\-me\-ro de ocorrências de uma entidade que participa do relacionamento com outra(s) entidade(s).
                 \begin{itemize}
                     \item \textbf{Um-para-Um}: Técnico e Time
                     \item \textbf{Um-para-Muitos}: Proprietário e Veículo
-                    \item \textbf{Muitos-para-Um}: Paciente e Médico, Professor e Aluno
+                    \item \textbf{Muitos-para-Um}: Veículo e Proprietário
+                    \item \textbf{Muitos-para-Muitos}: Paciente e Médico, Professor e Aluno
                 \end{itemize}
      \end{description}
      \item \begin{description}
@@ -153,10 +159,10 @@
     \item Tipos de entidade que não têm chave própria
     \item As instâncias são identificadas por meio do relacionamento com entidades de outro tipo (identificador), juntamento com os valores de alguns atributos (chave parcial)
     \item Precisa da entidade forte para definis sua identidade
-    \item Representada por um \textbf{Retângulo Duplo}
+    \item Representada por um \textbf{\textit{\underline{Retângulo Duplo}}}
 \end{itemize}
 
-\subsection{Grau de Relacionamento: Binários e Ternários}
+\newpage\subsection{Grau de Relacionamento: Binários e Ternários}
 \begin{itemize}
     \item
         Número de tipos de entidades participantes de um tipo de re\-la\-cio\-na\-men\-to.
@@ -166,11 +172,73 @@
         As entidades participantes atuam com \textbf{\textit{papel}} determinado no relacionamento.
 \end{itemize}
 
-% Continuar descrição + inclusão de imagens
+\begin{figure}[h]
+    \includegraphics[width=\linewidth, height=\textheight, keepaspectratio]{Relacionamento-Ternario}
+\end{figure}
 
-\subsection{MER Estendido: Generalização e Especialização}
+\newpage\subsection{MER Estendido: Generalização e Especialização}
 \begin{description}
-    \item[\textbf{Generalização}]: Processo de definição de entidade genérica.
+    \item[\textbf{Generalização}:] 
+        Processo de definição de entidade genérica (super-classe ou super-tipo)
+        \begin{itemize}
+            \item \textbf{Ex:} Pessoa é generalização de Pessoa Física e Pessoa Jurídica
+        \end{itemize}
+    \item[\textbf{Especialização}:] 
+        Processe de definição de subclasses de uma entidade
+        \begin{itemize}
+            \item \textbf{Ex:} Cliente especial é especialização de Cliente
+        \end{itemize}
 \end{description}
+\begin{itemize}
+    \item Uma entidade de um subtipo \textbf{herda} todos os atributos e relacionamentos de seu super-tipo.
+    \item Uma entidade de um subtipo pode ou não possuir atributos próprios e relacionamentos específicos
+\end{itemize}
+
+\begin{figure}[h]
+    \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{subtipos}
+\end{figure}
+
+\newpage
+\begin{itemize}
+    \item \textbf{Disjunção}: subtipos podem ser \textbf{\textit{disjuntos}} ou \textbf{\textit{sobrepostos}}
+        \begin{itemize}
+            \item \textbf{\underline{Disjunto}}
+                \begin{itemize}
+                    \item entidade de supertipo pode pertencer a \textbf{APENAS UM} subtipo de especialização.
+                    \item representado pela letra \textbf{b} ciculada.
+                \end{itemize}
+            \item \textbf{\underline{Sobreposto}}
+                \begin{itemize}
+                    \item entidade de supertipo pode pertencer a \textbf{VÁRIOS} subtipos.
+                    \item representado pela letra \textbf{s} \textbf{o} ciculada.
+                \end{itemize}
+        \end{itemize}
+    \item \textbf{Completude:} completudo do super-tipo aos subtipos pode ser \textbf{\textit{total}} ou \textbf{\textit{parcial}}.
+        \begin{itemize}
+            \item \textbf{Parcial:}
+                \begin{itemize}
+                    \item entidades \textbf{PODEM NÃO} pertencer a algum subtipo.
+                    \item Representado por \textbf{\textit{linha simples}}.
+                \end{itemize}
+            \item \textbf{Total:}
+                \begin{itemize}
+                    \item entidades \textbf{DEVEM} pertencer a, pelo menos, um subtipo.
+                    \item Representado por \textbf{\textit{linha dupla}}.
+                \end{itemize}
+        \end{itemize}
+    \item \textbf{Combinações Possíveis:}
+        \begin{itemize}
+            \item Disjunto / Total
+            \item Disjunto / Parcial
+            \item Sobreposto / Total
+            \item Sobreposto / Parcial
+        \end{itemize}
+\end{itemize}
+
+\newpage
+\begin{figure}[h]
+    %\includegraphics[scale=0.2]{MER-estendido}
+    \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{MER-estendido}
+\end{figure}
 
 \end{document}

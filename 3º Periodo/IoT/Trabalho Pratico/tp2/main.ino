@@ -1,12 +1,12 @@
-#include <Arduino.h>
+#include <dummy.h>
 
-const int led_red = 8;
-const int led_ylw = 12;
-const int led_grn = 13;
+const int led_red = 32;
+const int led_ylw = 33;
+const int led_grn = 25;
 
-const int btn_red = 2;
-const int btn_ylw = 4;
-const int btn_grn = 7;
+const int btn_red = 27;
+const int btn_ylw = 14;
+const int btn_grn = 12;
 
 int btn_red_state = 0;
 int btn_ylw_state = 0;
@@ -14,6 +14,9 @@ int btn_grn_state = 0;
 
 void setup()
 {
+  // Leitura Serial
+  Serial.begin(9600);
+
   // Led's
   pinMode(led_red, OUTPUT);
   pinMode(led_ylw, OUTPUT);
@@ -35,11 +38,25 @@ void loop()
   btn_red_state = digitalRead(btn_red);
   btn_ylw_state = digitalRead(btn_ylw);
   btn_grn_state = digitalRead(btn_grn);
-  
-  if(btn_red_state == 1) digitalWrite(led_red, 1);
-  else digitalWrite(led_red, 0);
-  if(btn_ylw_state == 1) digitalWrite(led_ylw, 1);
-  else digitalWrite(led_ylw, 0);
-  if(btn_grn_state == 1) digitalWrite(led_grn, 1);
-  else digitalWrite(led_grn, 0);
+
+  // Led Vermelho
+  if(btn_red_state == 1) {
+    digitalWrite(led_red, 1);
+    Serial.println("Botao do led 'VERMELHO' pressionado!");
+    delay(100);
+  } else{ digitalWrite(led_red, 0); }
+
+  // Led Amarelo
+  if(btn_ylw_state == 1) {
+    digitalWrite(led_ylw, 1);
+    Serial.println("Botao do led 'AMARELO' pressionado!");
+    delay(100);
+  } else{ digitalWrite(led_ylw, 0); }
+
+  // Led Verde
+  if(btn_grn_state == 1) {
+    digitalWrite(led_grn, 1);
+    Serial.println("Botao do led 'VERDE' pressionado!");
+    delay(100);
+  } else{ digitalWrite(led_grn, 0); }
 }

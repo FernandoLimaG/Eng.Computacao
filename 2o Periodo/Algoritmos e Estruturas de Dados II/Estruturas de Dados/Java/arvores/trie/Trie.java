@@ -6,13 +6,21 @@ class No
 {
     char elemento;
     boolean folha;
-    final int ascii = 256;
+    final int hash;
     No[] filhos;
+
+    public No(char elemento, int hash){
+        this.elemento = elemento;
+        this.folha = false;
+        this.hash = hash;
+        this.filhos = new No[hash];
+    }
 
     public No(char elemento){
         this.elemento = elemento;
         this.folha = false;
-        this.filhos = new No[ascii];
+        this.hash = 256;
+        this.filhos = new No[256];
     }
 
     public No(){ this('\0'); }
@@ -76,7 +84,7 @@ public class Trie
     private void imprimir(String s, No no){
         if(no.folha){ System.out.println(s); }
         else{
-            for(int i = 0; i < no.ascii; i++){
+            for(int i = 0; i < no.hash; i++){
                 No filho = no.getFilho((char)i);
                 if(filho != null){ imprimir(s + filho.elemento, filho); }
             }

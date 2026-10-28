@@ -1,0 +1,20 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {section}{\numberline {1}Parte A}{2}{section.1}%
+\contentsline {section}{\numberline {2}Parte B - Soma de Elementos de um Vetor}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Organização em Memória}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Execução}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Conversão para Binário}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Localização dos Bits - Barramento de Instrução}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Tipos de Instrução}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Análise do Datapath por Instrução}{8}{subsection.2.6}%
+\contentsline {subsubsection}{\numberline {2.6.1}Inicialização e Acesso à Memória}{8}{subsubsection.2.6.1}%
+\contentsline {subsubsection}{\numberline {2.6.2}Operações Aritméticas e Deslocamento}{8}{subsubsection.2.6.2}%
+\contentsline {subsubsection}{\numberline {2.6.3}Desvios e Saltos}{9}{subsubsection.2.6.3}%
+\contentsline {subsection}{\numberline {2.7}Sinais de Controle}{10}{subsection.2.7}%
+\contentsline {subsubsection}{\numberline {2.7.1}Registradores e Memórias}{10}{subsubsection.2.7.1}%
+\contentsline {subsubsection}{\numberline {2.7.2}ALU e desvios}{10}{subsubsection.2.7.2}%
+\contentsline {subsection}{\numberline {2.8}Datapath - Representação Gráfica}{11}{subsection.2.8}%
+\contentsline {subsubsection}{\numberline {2.8.1}Inicialização e Acesso à Memória}{11}{subsubsection.2.8.1}%
+\contentsline {subsubsection}{\numberline {2.8.2}Operações Aritméticas e Deslocamento}{15}{subsubsection.2.8.2}%
+\contentsline {subsubsection}{\numberline {2.8.3}Desvios e Saltos}{17}{subsubsection.2.8.3}%
+\contentsline {section}{\numberline {3}Parte C}{20}{section.3}%

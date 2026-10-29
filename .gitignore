@@ -32,4 +32,4 @@ bin/
 *.fdb_latexmk
 *.synctex.gz
 *.out
-Latex/*.pdf
+/_minted/

@@ -2,11 +2,10 @@
 
 ## Aluno
 - Fernando de Lima Gonçalves
-- 2o Período
-- PUC Minas - Praça da Liberdade
+- Pontifícia Universidade Católica de Minas Gerais
 
 ## Objetivo
-Manter controle e espaço centralizado para estudo, desenvolvimento de trabalho e acesso de informações úteis para o aluno durante o decorrer de sua jornada acadêmica
+Repositório de trabalhos, atividades e documentos de estudos realizados pelo aluno durante seu curso de Engenharia de Computação
 
 ## Diretórios
-O repositório possui um caminhamento simplificado que inicia da raíz e se ramifica em diretórios de semestres e subdiretórios de disciplinas cursadas pelo aluno durante o semestre escolhido
+O repositório possui um caminhamento simplificado em árvore partindo da raiz e percorrendo os semestres e disciplinas cursadas pelo aluno

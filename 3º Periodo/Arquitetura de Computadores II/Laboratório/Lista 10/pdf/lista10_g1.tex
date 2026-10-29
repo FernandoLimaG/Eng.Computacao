@@ -1,0 +1,110 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{caption}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage[portuguese]{babel}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+
+\graphicspath{{./img/}}
+\newcommand{\sectionbreak}{\clearpage}
+\setminted{
+    linenos,
+    frame=single,
+    breaklines
+}
+
+\title{
+Arquitetura de Computadores II\\
+Lista IX\\
+[1.5em]
+\centering
+\includegraphics[scale=0.8]{puc.png}
+}
+
+\author{Fernando de Lima Gonçalves}
+\date{Belo Horizonte\\10/2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Blocos RISC-V: Verilog}
+\subsection{Instruction Fetch}
+\subsubsection{Memória de Instrução}
+\inputminted{v}{./code/verilog/instruction_memory.v}
+
+\clearpage\subsubsection{Módulo de Busca}
+\inputminted{v}{./code/verilog/if_stage.v}
+
+\clearpage\subsection{Instruction Decode (ID)}
+\subsubsection{Banco de Registradores}
+\inputminted{v}{./code/verilog/register_file.v}
+
+\clearpage\subsubsection{Gerador de Imediatos}
+\inputminted{v}{./code/verilog/imm_gen.v}
+
+\clearpage\subsubsection{Módulo de Decodificação}
+\inputminted{v}{./code/verilog/id_stage.v}
+
+\clearpage\subsection{Control Unit}
+\subsubsection{Unidade de Controle}
+\inputminted{v}{./code/verilog/control_unit.v}
+
+\clearpage\subsection{Execution}
+\inputminted{v}{./code/verilog/ex_stage.v}
+
+\subsection{Memory Unit}
+\inputminted{v}{./code/verilog/mem_stage.v}
+
+\subsection{Write Back}
+\inputminted{v}{./code/verilog/wb_stage.v}
+
+\clearpage
+\subsection{Bloco Top-Level: RISC-V}
+\inputminted{v}{./code/verilog/riscv_top.v}
+
+\section{Blocos RISC-V: Java}
+Os blocos de código \texttt{Java} foram traduzidos da linguagem \texttt{verilog} 
+via \texttt{LLM GPT-6} em esforço médio.
+
+\subsection{Instruction Fetch}
+\subsubsection{Memória de Instrução}
+\inputminted{java}{./code/java/instruction_memory.java}
+
+\clearpage\subsubsection{Módulo de Busca}
+\inputminted{java}{./code/java/if_stage.java}
+
+\clearpage
+\subsection{Instruction Decode (ID)}
+\subsubsection{Banco de Registradores}
+\inputminted{java}{./code/java/register_file.java}
+
+\clearpage\subsubsection{Gerador de Imediatos}
+\inputminted{java}{./code/java/imm_gen.java}
+
+\clearpage\subsubsection{Módulo de Decodificação}
+\inputminted{java}{./code/java/id_stage.java}
+
+\clearpage
+\subsection{Control Unit}
+\inputminted{java}{./code/java/control_unit.java}
+
+\clearpage\subsection{Execution}
+\inputminted[fontsize=\small]{java}{./code/java/ex_stage.java}
+
+\subsection{Memory Unit}
+\inputminted{java}{./code/java/mem_stage.java}
+
+\subsection{Write Back}
+\inputminted{java}{./code/java/wb_stage.java}
+
+\clearpage
+\subsection{Bloco Top-Level: RISC-V}
+\inputminted[fontsize=\small]{java}{./code/java/riscv_top.java}
+
+\end{document}

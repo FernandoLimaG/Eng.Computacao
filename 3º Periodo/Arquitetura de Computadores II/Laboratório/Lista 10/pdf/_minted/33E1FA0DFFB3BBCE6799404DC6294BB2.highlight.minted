@@ -1,0 +1,43 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{class} \PYG{n+nc}{ex\PYGZus{}stage}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{pc}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{imm}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}src}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}control}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}result}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{zero}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}target}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}operand2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}out}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{update}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{c+c1}{// Mux para selecionar Registrador ou Imediato}
+\PYG{+w}{        }\PYG{n}{alu\PYGZus{}operand2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{alu\PYGZus{}src}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{n}{imm}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data2}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{n}{pc\PYGZus{}target}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{pc}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{imm}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// Cálculo do PC alvo para desvios}
+
+\PYG{+w}{        }\PYG{c+c1}{// Unidade Lógica e Aritmética (ALU)}
+\PYG{+w}{        }\PYG{k}{switch}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{alu\PYGZus{}control}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mb}{0b0000}\PYG{p}{:}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}out}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}operand2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// ADD}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mb}{0b0001}\PYG{p}{:}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}out}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}operand2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// SUB}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mb}{0b0010}\PYG{p}{:}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}out}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}operand2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// AND}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mb}{0b0011}\PYG{p}{:}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}out}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{+w}{ }\PYG{o}{|}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}operand2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// OR}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{            }\PYG{k}{default}\PYG{p}{:}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}out}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{        }\PYG{n}{alu\PYGZus{}result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}out}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{zero}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{alu\PYGZus{}out}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{);}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

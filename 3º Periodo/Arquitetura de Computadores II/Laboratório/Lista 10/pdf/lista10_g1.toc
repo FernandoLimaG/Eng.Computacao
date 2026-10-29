@@ -1,0 +1,28 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {section}{\numberline {1}Blocos RISC-V: Verilog}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Instruction Fetch}{2}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Memória de Instrução}{2}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Módulo de Busca}{3}{subsubsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.2}Instruction Decode (ID)}{4}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Banco de Registradores}{4}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Gerador de Imediatos}{5}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}Módulo de Decodificação}{6}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.3}Control Unit}{7}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Unidade de Controle}{7}{subsubsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.4}Execution}{9}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Memory Unit}{10}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Write Back}{10}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Bloco Top-Level: RISC-V}{11}{subsection.1.7}%
+\contentsline {section}{\numberline {2}Blocos RISC-V: Java}{14}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Instruction Fetch}{14}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Memória de Instrução}{14}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Módulo de Busca}{15}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Instruction Decode (ID)}{16}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Banco de Registradores}{16}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Gerador de Imediatos}{17}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Módulo de Decodificação}{18}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Control Unit}{20}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Execution}{22}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Memory Unit}{23}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Write Back}{23}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Bloco Top-Level: RISC-V}{24}{subsection.2.7}%

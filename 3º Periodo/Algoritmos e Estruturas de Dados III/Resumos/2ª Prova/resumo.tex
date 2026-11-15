@@ -1,0 +1,54 @@
+\documentclass[a4paper,titlepage,12pt]{article}
+
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{bytefield}
+\usepackage[portuguese]{babel}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+
+% Configs
+\graphicspath{ {./img/}{./../../../../} }
+\newcommand{\sectionbreak}{\clearpage}
+\setminted{
+    linenos,
+    frame=single,
+    breaklines,
+    fontsize=\small
+}
+
+\title{
+Algoritmos e Estruturas de Dados III\\\Large{Compressão e Casamento de Padrões}
+\\[1.5em]
+\centering
+\includegraphics[scale=0.8]{puc}
+}
+\author{Fernando de Lima Gonçalves}
+\date{Belo Horizonte\\2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Compressão}
+\subsection{Métodos Estatísticos}
+
+\subsection{Métodos Dicionário}
+
+\section{Casamento de Padrões}
+\subsection{Força Bruta}
+
+\subsection{KMP}
+
+\subsection{Boyer-Moore}
+
+\subsection{Shift-AND}
+
+\subsection{Rabin-Karp}
+
+\subsection{Aho Corasick}
+
+\subsection{Levenshtein}
+\end{document}

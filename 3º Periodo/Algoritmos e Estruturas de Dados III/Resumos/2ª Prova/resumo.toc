@@ -1,6 +1,6 @@
 \babel@toc {portuguese}{}\relax 
 \contentsline {section}{\numberline {1}Compressão}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Métodos Estatísticos}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.1}RLE e Métodos Estatísticos}{2}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Métodos Dicionário}{2}{subsection.1.2}%
 \contentsline {section}{\numberline {2}Casamento de Padrões}{2}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Força Bruta}{2}{subsection.2.1}%

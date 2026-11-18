@@ -11,7 +11,7 @@ module control_unit (
     output reg        branch,
     output reg  [3:0] alu_control
 );
-    always @() begin
+    always @(*) begin
         // Padrões Default
         alu_src     = 1'b0;
         mem_to_reg  = 1'b0;

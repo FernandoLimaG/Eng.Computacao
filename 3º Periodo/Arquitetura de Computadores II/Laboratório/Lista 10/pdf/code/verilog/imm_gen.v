@@ -3,7 +3,7 @@ module imm_gen (
     input  wire [31:0] inst,
     output reg  [31:0] imm
 );
-    always @() begin
+    always @(*) begin
         case (inst[6:2])
             5'b00000: imm = {{20{inst[31]}}, inst[31:20]};             // Tipo-I (LW)
             5'b01000: imm = {{20{inst[31]}}, inst[31:25], inst[11:7]}; // Tipo-S (SW)

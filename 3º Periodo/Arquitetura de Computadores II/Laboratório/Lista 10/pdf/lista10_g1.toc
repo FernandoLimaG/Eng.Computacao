@@ -26,3 +26,7 @@
 \contentsline {subsection}{\numberline {2.5}Memory Unit}{23}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}Write Back}{23}{subsection.2.6}%
 \contentsline {subsection}{\numberline {2.7}Bloco Top-Level: RISC-V}{24}{subsection.2.7}%
+\contentsline {section}{\numberline {3}Simulações}{27}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Testbench}{27}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Formas de Onda}{27}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Análise e Conclusão}{27}{section.4}%

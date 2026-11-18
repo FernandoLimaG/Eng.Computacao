@@ -5,7 +5,7 @@ module ex_stage (
     input  wire [31:0] read_data2,
     input  wire [31:0] imm,
     input  wire        alu_src,
-    input  wire [3/0]  alu_control,
+    input  wire [3:0]  alu_control,
     output wire [31:0] alu_result,
     output wire        zero,
     output wire [31:0] pc_target
@@ -23,7 +23,7 @@ module ex_stage (
     assign alu_result = alu_out;
     assign zero       = (alu_out == 32'b0);
 
-    always @() begin
+    always @(*) begin
         case (alu_control)
             4'b0000: alu_out = read_data1 + alu_operand2; // ADD
             4'b0001: alu_out = read_data1 - alu_operand2; // SUB

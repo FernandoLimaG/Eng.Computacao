@@ -6,7 +6,7 @@
 \PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data2}\PYG{p}{,}
 \PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{imm}\PYG{p}{,}
 \PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{alu\PYGZus{}src}\PYG{p}{,}
-\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{3}\PYG{o}{/}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{  }\PYG{n}{alu\PYGZus{}control}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{3}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{  }\PYG{n}{alu\PYGZus{}control}\PYG{p}{,}
 \PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}result}\PYG{p}{,}
 \PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{zero}\PYG{p}{,}
 \PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}target}
@@ -24,7 +24,7 @@
 \PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}result}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}out}\PYG{p}{;}
 \PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{zero}\PYG{+w}{       }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{alu\PYGZus{}out}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mb}{\PYGZsq{}b0}\PYG{p}{);}
 
-\PYG{+w}{    }\PYG{k}{always}\PYG{+w}{ }\PYG{p}{@()}\PYG{+w}{ }\PYG{k}{begin}
+\PYG{+w}{    }\PYG{k}{always}\PYG{+w}{ }\PYG{p}{@(}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{begin}
 \PYG{+w}{        }\PYG{k}{case}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{alu\PYGZus{}control}\PYG{p}{)}
 \PYG{+w}{            }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0000}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}out}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}operand2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// ADD}
 \PYG{+w}{            }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0001}\PYG{o}{:}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}out}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{+w}{ }\PYG{o}{\PYGZhy{}}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}operand2}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// SUB}

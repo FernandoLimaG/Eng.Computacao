@@ -10,17 +10,19 @@
 \usepackage[portuguese]{babel}
 \usepackage[colorlinks=true,allcolors=black]{hyperref}
 
-\graphicspath{{./img/}}
+\graphicspath{{./img/}{./../../../}}
 \newcommand{\sectionbreak}{\clearpage}
-\setminted{
+\setminted
+{
     linenos,
     frame=single,
     breaklines
 }
 
-\title{
+\title
+{
 Arquitetura de Computadores II\\
-Lista IX\\
+Lista X\\
 [1.5em]
 \centering
 \includegraphics[scale=0.8]{puc.png}
@@ -106,5 +108,12 @@ via \texttt{LLM GPT-6} em esforço médio.
 \clearpage
 \subsection{Bloco Top-Level: RISC-V}
 \inputminted[fontsize=\small]{java}{./code/java/riscv_top.java}
+
+\section{Simulações}
+\subsection{Testbench}
+
+\subsection{Formas de Onda}
+
+\section{Análise e Conclusão}
 
 \end{document}

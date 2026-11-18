@@ -8,7 +8,6 @@ module tb_ex_stage;
     reg [31:0] imm;
     reg alu_src;
     reg [3:0] alu_control;
-
     wire [31:0] alu_result;
     wire zero;
     wire [31:0] pc_target;
@@ -28,11 +27,9 @@ module tb_ex_stage;
     initial begin
         $dumpfile("tb_ex_stage.vcd");
         $dumpvars(0, tb_ex_stage);
-
         $monitor("T=%0t | PC=%d | A=%d | B=%d | IMM=%d | Src=%b | Ctrl=%b | Result=%d | Zero=%b | Target=%d",
                  $time, pc, read_data1, read_data2, imm,
                  alu_src, alu_control, alu_result, zero, pc_target);
-
         pc = 32'd0;
         read_data1 = 32'd10;
         read_data2 = 32'd5;
@@ -60,14 +57,12 @@ module tb_ex_stage;
         alu_control = 4'b0000;
         #10;
 
-        // SUB com operandos iguais
         // Resultado = 0 e zero = 1
         alu_src = 0;
         read_data2 = 32'd10;
         alu_control = 4'b0001;
         #10;
 
-        // Calculo do destino do desvio
         // PC = 100, IMM = 16, Target = 116
         pc = 32'd100;
         imm = 32'd16;
@@ -76,8 +71,6 @@ module tb_ex_stage;
         // Operacao nao reconhecida
         alu_control = 4'b1111;
         #10;
-
         $finish;
     end
-
 endmodule

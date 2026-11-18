@@ -13,10 +13,8 @@ module tb_imm_gen;
     initial begin
         $dumpfile("tb_imm_gen.vcd");
         $dumpvars(0, tb_imm_gen);
-
-        $monitor("T=%0t | INST=%h | IMM=%h | DECIMAL=%0d",
-                 $time, inst, imm, $signed(imm));
-
+        $monitor("T=%0t | INST=%h | IMM=%h", $time, inst, imm);
+        
         // LW com imediato +4
         inst = {12'd4, 5'd3, 3'b010,
                 5'd4, 7'b0000011};

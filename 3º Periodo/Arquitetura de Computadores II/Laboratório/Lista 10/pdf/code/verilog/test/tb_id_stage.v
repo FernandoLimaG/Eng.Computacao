@@ -37,10 +37,8 @@ module tb_id_stage;
     initial begin
         $dumpfile("tb_id_stage.vcd");
         $dumpvars(0, tb_id_stage);
-
-        $monitor("T=%0t | INST=%h | OPCODE=%b | RD=%d | F3=%b | F7=%b | R1=%d | R2=%d | IMM=%0d",
-                 $time, instruction, opcode, rd, funct3,
-                 funct7_5, read_data1, read_data2, $signed(imm));
+        $monitor("T=%0t | INST=%h | OPCODE=%b | RD=%d | F3=%b | F7=%b | R1=%d | R2=%d | IMM=%h",
+            $time, instruction, opcode, rd, funct3, funct7_5, read_data1, read_data2, imm);
 
         instruction = 32'h002081B3;
         reg_write_wb = 0;

@@ -72,8 +72,6 @@ module tb_control_unit;
         // Opcode invalido
         opcode = 7'b1111111;
         #10;
-
         $finish;
     end
-
 endmodule

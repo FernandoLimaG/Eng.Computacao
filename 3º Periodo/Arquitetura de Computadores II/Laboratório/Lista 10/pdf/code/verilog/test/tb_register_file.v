@@ -1,14 +1,12 @@
 `timescale 1ns/1ps
 
 module tb_register_file;
-
     reg clk;
     reg reg_write;
     reg [4:0] rs1;
     reg [4:0] rs2;
     reg [4:0] rd;
     reg [31:0] write_data;
-
     wire [31:0] read_data1;
     wire [31:0] read_data2;
 
@@ -25,11 +23,9 @@ module tb_register_file;
 
     initial clk = 0;
     always #5 clk = ~clk;
-
     initial begin
         $dumpfile("tb_register_file.vcd");
         $dumpvars(0, tb_register_file);
-
         $monitor("T=%0t | WE=%b | RD=%d | WD=%d | RS1=%d | R1=%d | RS2=%d | R2=%d",
                  $time, reg_write, rd, write_data,
                  rs1, read_data1, rs2, read_data2);
@@ -75,12 +71,9 @@ module tb_register_file;
         write_data = 32'd50;
         #10;
 
-        // Conferencia dos valores anteriores
         rs1 = 5'd1;
         rs2 = 5'd2;
         #10;
-
         $finish;
     end
-
 endmodule

@@ -1,32 +1,52 @@
 \babel@toc {portuguese}{}\relax 
-\contentsline {section}{\numberline {1}Blocos RISC-V: Verilog}{2}{section.1}%
-\contentsline {subsection}{\numberline {1.1}Instruction Fetch}{2}{subsection.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Memória de Instrução}{2}{subsubsection.1.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.2}Módulo de Busca}{3}{subsubsection.1.1.2}%
-\contentsline {subsection}{\numberline {1.2}Instruction Decode (ID)}{4}{subsection.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}Banco de Registradores}{4}{subsubsection.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.2}Gerador de Imediatos}{5}{subsubsection.1.2.2}%
-\contentsline {subsubsection}{\numberline {1.2.3}Módulo de Decodificação}{6}{subsubsection.1.2.3}%
-\contentsline {subsection}{\numberline {1.3}Control Unit}{7}{subsection.1.3}%
-\contentsline {subsubsection}{\numberline {1.3.1}Unidade de Controle}{7}{subsubsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.4}Execution}{9}{subsection.1.4}%
-\contentsline {subsection}{\numberline {1.5}Memory Unit}{10}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Write Back}{10}{subsection.1.6}%
-\contentsline {subsection}{\numberline {1.7}Bloco Top-Level: RISC-V}{11}{subsection.1.7}%
-\contentsline {section}{\numberline {2}Blocos RISC-V: Java}{14}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Instruction Fetch}{14}{subsection.2.1}%
-\contentsline {subsubsection}{\numberline {2.1.1}Memória de Instrução}{14}{subsubsection.2.1.1}%
-\contentsline {subsubsection}{\numberline {2.1.2}Módulo de Busca}{15}{subsubsection.2.1.2}%
-\contentsline {subsection}{\numberline {2.2}Instruction Decode (ID)}{16}{subsection.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Banco de Registradores}{16}{subsubsection.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Gerador de Imediatos}{17}{subsubsection.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}Módulo de Decodificação}{18}{subsubsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.3}Control Unit}{20}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Execution}{22}{subsection.2.4}%
-\contentsline {subsection}{\numberline {2.5}Memory Unit}{23}{subsection.2.5}%
-\contentsline {subsection}{\numberline {2.6}Write Back}{23}{subsection.2.6}%
-\contentsline {subsection}{\numberline {2.7}Bloco Top-Level: RISC-V}{24}{subsection.2.7}%
-\contentsline {section}{\numberline {3}Simulações}{27}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Testbench}{27}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Formas de Onda}{27}{subsection.3.2}%
-\contentsline {section}{\numberline {4}Análise e Conclusão}{27}{section.4}%
+\contentsline {section}{\numberline {1}Blocos RISC-V: Verilog}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Instruction Fetch}{3}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Memória de Instrução}{3}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Módulo de Busca}{4}{subsubsection.1.1.2}%
+\contentsline {subsection}{\numberline {1.2}Instruction Decode (ID)}{5}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Banco de Registradores}{5}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Gerador de Imediatos}{6}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}Módulo de Decodificação}{7}{subsubsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.3}Control Unit}{8}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Unidade de Controle}{8}{subsubsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.4}Execution}{10}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Memory Unit}{11}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Write Back}{11}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}Bloco Top-Level: RISC-V}{12}{subsection.1.7}%
+\contentsline {section}{\numberline {2}Blocos RISC-V: Java}{15}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Instruction Fetch}{15}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}Memória de Instrução}{15}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}Módulo de Busca}{16}{subsubsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.2}Instruction Decode (ID)}{17}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Banco de Registradores}{17}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Gerador de Imediatos}{18}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Módulo de Decodificação}{19}{subsubsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.3}Control Unit}{21}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Execution}{23}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Memory Unit}{24}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Write Back}{24}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Bloco Top-Level: RISC-V}{25}{subsection.2.7}%
+\contentsline {section}{\numberline {3}Testbench}{28}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Descrição}{28}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Códigos}{29}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}Memória de Instrução}{29}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}Módulo de Busca}{31}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}Banco de Registradores}{33}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}Gerador de Imediatos}{35}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}Módulo de Decodificação}{37}{subsubsection.3.2.5}%
+\contentsline {subsubsection}{\numberline {3.2.6}Unidade de Controle}{40}{subsubsection.3.2.6}%
+\contentsline {subsubsection}{\numberline {3.2.7}Execution}{42}{subsubsection.3.2.7}%
+\contentsline {subsubsection}{\numberline {3.2.8}Memory Unit}{44}{subsubsection.3.2.8}%
+\contentsline {subsubsection}{\numberline {3.2.9}Write Back}{46}{subsubsection.3.2.9}%
+\contentsline {subsubsection}{\numberline {3.2.10}Bloco Top-Level: RISC-V}{48}{subsubsection.3.2.10}%
+\contentsline {section}{\numberline {4}Simulação: TP Lab}{50}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Memória de Instrução}{50}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Módulo de Busca}{51}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Banco de Registradores}{52}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Gerador de Imediatos}{53}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Módulo de Decodificação}{54}{subsection.4.5}%
+\contentsline {subsection}{\numberline {4.6}Unidade de Controle}{55}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}Execution}{56}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Memory Unit}{57}{subsection.4.8}%
+\contentsline {subsection}{\numberline {4.9}Write Back}{58}{subsection.4.9}%
+\contentsline {subsection}{\numberline {4.10}Bloco Top-Level: RISC-V}{59}{subsection.4.10}%

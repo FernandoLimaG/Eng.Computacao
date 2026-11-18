@@ -1,0 +1,45 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+no}{`timescale}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{n}{ns}\PYG{o}{/}\PYG{l+m+mh}{1}\PYG{n}{ps}
+
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{tb\PYGZus{}instruction\PYGZus{}memory}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k+kt}{reg}\PYG{+w}{  }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{address}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n}{instruction\PYGZus{}memory}\PYG{+w}{ }\PYG{n}{dut}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{address}\PYG{p}{(}\PYG{n}{address}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{instruction}\PYG{p}{(}\PYG{n}{instruction}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{k}{initial}\PYG{+w}{ }\PYG{k}{begin}
+\PYG{+w}{        }\PYG{n}{\PYGZdl{}dumpfile}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}tb\PYGZus{}instruction\PYGZus{}memory.vcd\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{\PYGZdl{}dumpvars}\PYG{p}{(}\PYG{l+m+mh}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tb\PYGZus{}instruction\PYGZus{}memory}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== TESTE INSTRUCTION MEMORY ===\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}monitor}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}T=\PYGZpc{}0t | Address=\PYGZpc{}d | Instruction=\PYGZpc{}h\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                 }\PYG{n+nb}{\PYGZdl{}time}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{address}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{c+c1}{// ADD x3, x1, x2}
+\PYG{+w}{        }\PYG{n}{address}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// LW x4, 4(x3)}
+\PYG{+w}{        }\PYG{n}{address}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d4}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// SW x4, 8(x3)}
+\PYG{+w}{        }\PYG{n}{address}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d8}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Teste do alinhamento por palavra}
+\PYG{+w}{        }\PYG{n}{address}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d9}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{n}{address}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}finish}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}
+
+\PYG{k}{endmodule}
+\end{MintedVerbatim}

@@ -1,24 +1,25 @@
--- Profissional --
-CREATE TABLE tipo_profissional (
-	id_tipo VARCHAR(10) PRIMARY KEY,
-	descrição_tipo VARCHAR(300)
+CREATE TABLE profissional (
+	matricula VARCHAR(10) PRIMARY KEY,
+	nome VARCHAR(150),
+	salario DECIMAL(10,2)
 );
 
-CREATE TABLE profissional (
-	matricula VARCHAR(8) PRIMARY KEY,
-	nome VARCHAR(150),
-	salario DECIMAL(10,2),
-	
-	FOREIGN KEY (id_tipo)
-		REFERENCES tipo_profissional(id_tipo)
+CREATE TABLE tipo_profissional (
+	id_tipo VARCHAR(10) PRIMARY KEY,
+	descrição_tipo VARCHAR(300),
+    matricula_profissional VARCHAR (10) NOT NULL,
+
+    FOREIGN KEY (matricula_profissional)
+        REFERENCES profissional (matricula)
 );
 
 CREATE TABLE telefones (
-	matricula_profissional VARCHAR(150),
+	matricula_profissional VARCHAR(10),
 	telefone VARCHAR(11),
 	
 	PRIMARY KEY (matricula_profissional,telefone),
-	FOREIGN KEY (matricula)
+	
+    FOREIGN KEY (matricula_profissional)
 		REFERENCES profissional (matricula)
 );
 
@@ -33,16 +34,15 @@ CREATE TABLE evento (
 );
 
 CREATE TABLE escala (
-	id_profissional VARCHAR(8),
+	id_profissional VARCHAR(10),
 	id_evento VARCHAR(10),
 	quantidade_horas INT,
 	
 	PRIMARY KEY (id_profissional,id_evento),
-	
-	-- Assossiação --
+
 	FOREIGN KEY (id_profissional)
 		REFERENCES profissional (matricula),
-	
+
 	FOREIGN KEY (id_evento)
 		REFERENCES evento (id_evento)
 );
@@ -54,7 +54,11 @@ CREATE TABLE formatura (
 	telefone_chefe VARCHAR(11),
 	forma_pgto VARCHAR(20),
 	valor DECIMAL(10,2),
-	id_formatura VARCHAR(10) PRIMARY KEY
+	id_formatura VARCHAR(10) PRIMARY KEY,
+    id_evento VARCHAR (10) NOT NULL,
+
+    FOREIGN KEY (id_evento)
+        REFERENCES evento (id_evento)
 );
 
 CREATE TABLE aperitivo (
@@ -102,4 +106,18 @@ CREATE TABLE cardapio_buffet (
 	
 	FOREIGN KEY (id_cardapio)
 		REFERENCES cardapio (id_cardapio)
+);
+
+CREATE TABLE cerimonial (
+    endereco_cerimonial VARCHAR(500),
+    nome VARCHAR(150),
+    cnpj VARCHAR(14) PRIMARY KEY,
+    cnpj_buffet VARCHAR(14) NOT NULL,
+    id_formatura VARCHAR (10) NOT NULL,
+
+    FOREIGN KEY (cnpj_buffet)
+        REFERENCES buffet (cnpj),
+
+    FOREIGN KEY (id_formatura)
+        REFERENCES formatura (id_formatura)
 );

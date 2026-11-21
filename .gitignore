@@ -1,31 +1,30 @@
-#OS
+# OS
 .DS_Store
 Thumbs.db
 
-#IDE
+# IDE
 .idea/
 .vscode/
 target/
 build/
 out/
 
-#Java
+# Java
 *.class
 *.log
 *.jar
 *.war
 *.ear
 
-#C
+# C
 *.o
 *.obj
 *.exe
 *.a
 *.out
 *.app
-bin/
 
-#LaTeX
+# LaTeX
 *.aux
 *.log
 *.fls
@@ -34,5 +33,8 @@ bin/
 *.out
 /_minted/
 
-## Específicos
+# Bin
+**/bin/*
+
+# Específicos
 puc.png

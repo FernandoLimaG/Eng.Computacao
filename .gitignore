@@ -33,3 +33,6 @@ bin/
 *.synctex.gz
 *.out
 /_minted/
+
+## Específicos
+puc.png

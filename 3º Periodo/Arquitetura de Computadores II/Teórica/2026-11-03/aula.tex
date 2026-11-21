@@ -1,0 +1,44 @@
+\documentclass[12pt,titlepage,a4paper]{article}
+
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage[portuguese]{babel}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+
+\title{Data Path e Control Path}
+\author{Fernando de Lima Gonçalves}
+\date{Belo Horizonte\\2026}
+
+\newcommand{\sectionbreak}{\clearpage}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Introdução}
+\subsection{Data Path}
+Este é o "músculo" do processador.
+Elementos que executam operações (como a \texttt{ULA}, somadores do PC e para calcular um salto relativo).
+
+\subsection{Control Path}
+Este é o "cérebro" da CPU.
+A partir de alguns bits do \texttt{machine code} da instrução, algumas partes do processador são acionadas, enquanto outras, não.
+\texttt{MUX} e \texttt{DEMUX} são \textbf{também} elementos do control path.
+Alguns bits da instrução indicam a seleção do mux (ex. jar, ativa o salto relativo a uma posição na memória).
+
+\section{Desenvolvimento}
+Assim como não existe mente sem corpo e corpo sem mente, \texttt{control} e \texttt{data path} se complementam.
+
+Um gargalo temporal do processador é descrito por operações de leitura e escrita na memória de dados,
+\textbf{muito mais lentas}. Isso faz com que, a instrução em memória demore muito mais que instruções de acesso aos registradores.
+Instruções têm tempos de execução variáveis, no modelo Monociclo (cada execução é executada em 1 ciclo de clock) e, portanto,
+o clock é definido, em sua frequência, pelo tempo de execução da instrução mais lenta representado por:
+\begin{center}
+    \large
+    \[
+        \boxed{f_{clock} = \frac{1}{T}}
+    \]
+\end{center}
+
+\end{document}

@@ -30,8 +30,8 @@ public class Main
                 case 8: menuAvl(sc); break;
                 case 9: menuTrie(sc); break;
                 case 10: menuTabelaReserva(sc); break;
-                         /*
                 case 11: menuTabelaRehash(sc); break;
+                         /*
                 case 12: menuTabelaIndireto(sc); break;
                         */
                 default: Auxiliar.opcaoInvalida(); break;
@@ -119,7 +119,6 @@ public class Main
         tabela.executar(sc);
     }
 
-    /*
     private static void menuTabelaRehash (Scanner sc)
     {
         int tam = Auxiliar.lerInt("Tamanho da tabela: ",sc);
@@ -127,6 +126,7 @@ public class Main
         tabela.executar(sc);
     }
 
+    /*
     private static void menuTabelaIndireta (Scanner sc)
     {
         MenuTabela tabela = new MenuTabela();

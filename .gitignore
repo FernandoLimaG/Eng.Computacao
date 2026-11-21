@@ -35,6 +35,7 @@ out/
 
 # Bin
 **/bin/*
+!**/bin/.gitkeep
 
 # Específicos
 puc.png

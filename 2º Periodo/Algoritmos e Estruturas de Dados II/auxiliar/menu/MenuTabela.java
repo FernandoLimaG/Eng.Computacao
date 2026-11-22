@@ -1,7 +1,8 @@
 package auxiliar.menu;
 
 import auxiliar.Auxiliar;
-import estrutura.tabela.*;
+import estrutura.tabela.Rehash;
+import estrutura.tabela.Reserva;
 
 import java.util.Scanner;
 
@@ -9,27 +10,16 @@ public class MenuTabela
 {
     private Rehash rehash;
     private Reserva reserva;
-    //private Indireta indireta;
 
     public MenuTabela (int main, int reserva) {
         this.rehash = null;
-        //this.indireta = null;
         this.reserva = new Reserva(main,reserva);
     }
 
     public MenuTabela (int tam) {
         this.reserva = null;
         this.rehash = new Rehash(tam);
-        //this.indireta = null;
     }
-
-    /*
-    public MenuTabela () {
-        this.rehash = null;
-        this.reserva = null;
-        this.indireta = new Indireta();
-    }
-    */
 
     public void executar (Scanner sc) {
         while (true) {
@@ -41,15 +31,13 @@ public class MenuTabela
                     case 1:{
                                String nome = Auxiliar.lerString("Nome para inserir: ",sc);
                                if (reserva != null) reserva.inserir(nome);
-                               else if (rehash != null) rehash.inserir(nome);
-                               //else indireta.inserir(nome);
+                               else rehash.inserir(nome);
                                break;
                     }
                     case 2:{
                                String nome = Auxiliar.lerString("Nome para remover: ",sc);
                                if (reserva != null) nome = reserva.remover(nome);
-                               else if (rehash != null) nome = rehash.remover(nome);
-                               //else nome = indireta.remover(nome);
+                               else nome = rehash.remover(nome);
 
                                if (nome != null) System.out.println("[REMOVIDO]: " + nome);
                                else System.out.println("Nome não encontrado na tabela");
@@ -59,8 +47,7 @@ public class MenuTabela
                                int pos = -1;
                                String nome = Auxiliar.lerString("Nome para buscar: ",sc);
                                if (reserva != null) pos = reserva.pesquisar(nome);
-                               else if (rehash != null) pos = rehash.pesquisar(nome);
-                               //else pos = indireta.pesquisar(nome);
+                               else pos = rehash.pesquisar(nome);
 
                                if (pos != -1) System.out.println("Nome encontrado || Índice: " + pos);
                                else System.out.println("Nome não encontrado na tabela");
@@ -68,8 +55,7 @@ public class MenuTabela
                     }
                     case 4:{
                                if (reserva != null) reserva.imprimir();
-                               else if (rehash != null) rehash.imprimir();
-                               //else indireta.imprimir();
+                               else rehash.imprimir();
                                break;
                     }
                     default:{
@@ -80,6 +66,6 @@ public class MenuTabela
                 System.out.println();
             } catch (Exception e) { System.out.println("Erro: " + e.getMessage()); }
         }
-        System.out.println("FIM: Tabela Hash");
+        System.out.println("FIM: Tabela Hash c/ " + (reserva == null ? "Rehash" : "Reserva"));
     }
 }

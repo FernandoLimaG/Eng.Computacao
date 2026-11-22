@@ -31,9 +31,7 @@ public class Main
                 case 9: menuTrie(sc); break;
                 case 10: menuTabelaReserva(sc); break;
                 case 11: menuTabelaRehash(sc); break;
-                         /*
-                case 12: menuTabelaIndireto(sc); break;
-                        */
+                case 12: menuTabelaIndireta(sc); break;
                 default: Auxiliar.opcaoInvalida(); break;
             }
             System.out.println();
@@ -113,24 +111,23 @@ public class Main
 
     private static void menuTabelaReserva (Scanner sc)
     {
-        int principal = Auxiliar.lerInt("Tamanho principal da tabela: ",sc);
-        int reserva = Auxiliar.lerInt("Tamanho reserva da tabela: ",sc);
+        int principal = Auxiliar.lerInt("Capacidade principal da tabela: ",sc);
+        int reserva = Auxiliar.lerInt("Capacidade reserva da tabela: ",sc);
         MenuTabela tabela = new MenuTabela(principal,reserva);
         tabela.executar(sc);
     }
 
     private static void menuTabelaRehash (Scanner sc)
     {
-        int tam = Auxiliar.lerInt("Tamanho da tabela: ",sc);
-        MenuTabela tabela = new MenuTabela(tam);
+        int cap = Auxiliar.lerInt("Capacidade da tabela: ",sc);
+        MenuTabela tabela = new MenuTabela(cap);
         tabela.executar(sc);
     }
 
-    /*
     private static void menuTabelaIndireta (Scanner sc)
     {
-        MenuTabela tabela = new MenuTabela();
+        int cap = Auxiliar.lerInt("Capacidade da tabela: ",sc);
+        MenuTabelaIndireta tabela = new MenuTabelaIndireta(cap);
         tabela.executar(sc);
     }
-    */
 }

@@ -13,7 +13,10 @@ public class Lista
 
     private void apontarFim() { fim = inicio; }
 
-    private boolean isEmpty() { return (inicio == fim ? true : (inicio.prox == null ? true : false)); }
+    public boolean isEmpty() { return (inicio == fim ? true : (inicio.prox == null ? true : false)); }
+
+    public Celula getInicio() { return inicio; }
+    public Celula getFim() { return fim; }
 
     public void inserirInicio (String s) {
         Celula tmp = new Celula(s);
@@ -109,6 +112,12 @@ public class Lista
 
     public void imprimir () {
         System.out.println("===== Lista Flexível =====");
+        System.out.print("Lista: [");
+        imprimir (inicio.prox);
+        System.out.println("]");
+    }
+
+    public void imprimir (boolean head) {
         System.out.print("Lista: [");
         imprimir (inicio.prox);
         System.out.println("]");

@@ -2,8 +2,8 @@ package estrutura.flexivel;
 
 public class Celula
 {
-    String elemento;
-    Celula prox;
+    public String elemento;
+    public Celula prox;
 
     public Celula (String elemento) {
         this.elemento = elemento;

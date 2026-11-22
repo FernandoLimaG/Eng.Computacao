@@ -1,0 +1,58 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{class} \PYG{n+nc}{control\PYGZus{}unit}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{opcode}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{funct3}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{funct7\PYGZus{}5}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}src}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}write}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{mem\PYGZus{}read}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{mem\PYGZus{}write}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{branch}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}control}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{update}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{c+c1}{// Padrões Default}
+\PYG{+w}{        }\PYG{n}{alu\PYGZus{}src}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{false}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{false}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{false}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{mem\PYGZus{}read}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{false}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{mem\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{false}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{branch}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{false}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mb}{0b0000}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{switch}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{opcode}\PYG{p}{)}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{            }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mb}{0b0110011}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{c+c1}{// Tipo\PYGZhy{}R (ADD, SUB, AND, OR)}
+\PYG{+w}{                }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funct3}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mb}{0b000}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funct7\PYGZus{}5}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{l+m+mb}{0b0001}\PYG{+w}{ }\PYG{p}{:}\PYG{+w}{ }\PYG{l+m+mb}{0b0000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// SUB ou ADD}
+\PYG{+w}{                }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funct3}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mb}{0b111}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mb}{0b0010}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// AND}
+\PYG{+w}{                }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funct3}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mb}{0b110}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mb}{0b0011}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// OR}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mb}{0b0000011}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{c+c1}{// LW (Tipo\PYGZhy{}I)}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}src}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{mem\PYGZus{}read}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mb}{0b0000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// ADD para cálculo de endereço}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mb}{0b0100011}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{c+c1}{// SW (Tipo\PYGZhy{}S)}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}src}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{mem\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mb}{0b0000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// ADD para cálculo de endereço}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{case}\PYG{+w}{ }\PYG{l+m+mb}{0b1100011}\PYG{p}{:}\PYG{+w}{ }\PYG{p}{\PYGZob{}}\PYG{+w}{ }\PYG{c+c1}{// BEQ (Tipo\PYGZhy{}B)}
+\PYG{+w}{                }\PYG{n}{branch}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k+kc}{true}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mb}{0b0001}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// SUB para comparação de igualdade}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{            }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{            }\PYG{k}{default}\PYG{p}{:}
+\PYG{+w}{                }\PYG{k}{break}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZcb{}}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

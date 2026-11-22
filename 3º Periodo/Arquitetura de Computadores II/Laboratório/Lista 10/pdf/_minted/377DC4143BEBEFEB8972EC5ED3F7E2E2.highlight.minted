@@ -1,0 +1,81 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+no}{`timescale}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{n}{ns}\PYG{o}{/}\PYG{l+m+mh}{1}\PYG{n}{ps}
+
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{tb\PYGZus{}register\PYGZus{}file}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{clk}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}write}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{4}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{rs1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{4}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{rs2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{4}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{rd}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{write\PYGZus{}data}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data2}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n}{register\PYGZus{}file}\PYG{+w}{ }\PYG{n}{dut}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{clk}\PYG{p}{(}\PYG{n}{clk}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{reg\PYGZus{}write}\PYG{p}{(}\PYG{n}{reg\PYGZus{}write}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{rs1}\PYG{p}{(}\PYG{n}{rs1}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{rs2}\PYG{p}{(}\PYG{n}{rs2}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{rd}\PYG{p}{(}\PYG{n}{rd}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{write\PYGZus{}data}\PYG{p}{(}\PYG{n}{write\PYGZus{}data}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data1}\PYG{p}{(}\PYG{n}{read\PYGZus{}data1}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data2}\PYG{p}{(}\PYG{n}{read\PYGZus{}data2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{k}{initial}\PYG{+w}{ }\PYG{n}{clk}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{always}\PYG{+w}{ }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{5}\PYG{+w}{ }\PYG{n}{clk}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{clk}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{initial}\PYG{+w}{ }\PYG{k}{begin}
+\PYG{+w}{        }\PYG{n}{\PYGZdl{}dumpfile}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}tb\PYGZus{}register\PYGZus{}file.vcd\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{\PYGZdl{}dumpvars}\PYG{p}{(}\PYG{l+m+mh}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tb\PYGZus{}register\PYGZus{}file}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}monitor}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}T=\PYGZpc{}0t | WE=\PYGZpc{}b | RD=\PYGZpc{}d | WD=\PYGZpc{}d | RS1=\PYGZpc{}d | R1=\PYGZpc{}d | RS2=\PYGZpc{}d | R2=\PYGZpc{}d\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                 }\PYG{n+nb}{\PYGZdl{}time}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}write}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rd}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{write\PYGZus{}data}\PYG{p}{,}
+\PYG{+w}{                 }\PYG{n}{rs1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{rs2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data2}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rs1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rs2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{write\PYGZus{}data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Escrita de 10 em x1}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{2}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{write\PYGZus{}data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d10}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Escrita de 20 em x2}
+\PYG{+w}{        }\PYG{n}{rd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d2}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{write\PYGZus{}data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d20}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Leitura de x1 e x2}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rs1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rs2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d2}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Tentativa de escrita em x0}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{write\PYGZus{}data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d99}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Verificacao de x0}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rs1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rs2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Escrita desabilitada}
+\PYG{+w}{        }\PYG{n}{rd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{write\PYGZus{}data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d50}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{n}{rs1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rs2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{5}\PYG{l+m+mi}{\PYGZsq{}d2}\PYG{p}{;}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}finish}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}
+\PYG{k}{endmodule}
+\end{MintedVerbatim}

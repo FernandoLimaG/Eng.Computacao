@@ -1,0 +1,99 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// riscv\PYGZus{}top.v}
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{riscv\PYGZus{}top}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{clk}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{reset}
+\PYG{p}{);}
+\PYG{+w}{    }\PYG{c+c1}{// Fios de interconexão entre os estágios}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pc}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data2}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{imm}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{4}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{  }\PYG{n}{rd}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{2}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{  }\PYG{n}{funct3}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{funct7\PYGZus{}5}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{6}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{  }\PYG{n}{opcode}\PYG{p}{;}
+\PYG{+w}{    }
+\PYG{+w}{    }\PYG{c+c1}{// Sinais de Controle}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}src}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}write}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mem\PYGZus{}read}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{mem\PYGZus{}write}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{branch}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{3}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}control}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Sinais de Execução e Memória}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}result}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}target}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{zero}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}src}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Lógica do controle de Desvio (Branch AND Zero)}
+\PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}src}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{branch}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{n}{zero}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{c+c1}{// Estágio 1: Instruction Fetch}
+\PYG{+w}{    }\PYG{n}{if\PYGZus{}stage}\PYG{+w}{ }\PYG{n}{stage\PYGZus{}if}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{clk}\PYG{p}{(}\PYG{n}{clk}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{reset}\PYG{p}{(}\PYG{n}{reset}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{pc\PYGZus{}src}\PYG{p}{(}\PYG{n}{pc\PYGZus{}src}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{pc\PYGZus{}target}\PYG{p}{(}\PYG{n}{pc\PYGZus{}target}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{pc}\PYG{p}{(}\PYG{n}{pc}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{instruction}\PYG{p}{(}\PYG{n}{instruction}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Estágio 2: Instruction Decode}
+\PYG{+w}{    }\PYG{n}{id\PYGZus{}stage}\PYG{+w}{ }\PYG{n}{stage\PYGZus{}id}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{clk}\PYG{p}{(}\PYG{n}{clk}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{instruction}\PYG{p}{(}\PYG{n}{instruction}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{reg\PYGZus{}write\PYGZus{}wb}\PYG{p}{(}\PYG{n}{reg\PYGZus{}write}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{rd\PYGZus{}wb}\PYG{p}{(}\PYG{n}{rd}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{(}\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data1}\PYG{p}{(}\PYG{n}{read\PYGZus{}data1}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data2}\PYG{p}{(}\PYG{n}{read\PYGZus{}data2}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{imm}\PYG{p}{(}\PYG{n}{imm}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{rd}\PYG{p}{(}\PYG{n}{rd}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{funct3}\PYG{p}{(}\PYG{n}{funct3}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{funct7\PYGZus{}5}\PYG{p}{(}\PYG{n}{funct7\PYGZus{}5}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{opcode}\PYG{p}{(}\PYG{n}{opcode}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Unidade de Controle Central (Atua no ID, mas distribui para EX, MEM e WB)}
+\PYG{+w}{    }\PYG{n}{control\PYGZus{}unit}\PYG{+w}{ }\PYG{n}{control}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{opcode}\PYG{p}{(}\PYG{n}{opcode}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{funct3}\PYG{p}{(}\PYG{n}{funct3}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{funct7\PYGZus{}5}\PYG{p}{(}\PYG{n}{funct7\PYGZus{}5}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{alu\PYGZus{}src}\PYG{p}{(}\PYG{n}{alu\PYGZus{}src}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{p}{(}\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{reg\PYGZus{}write}\PYG{p}{(}\PYG{n}{reg\PYGZus{}write}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{mem\PYGZus{}read}\PYG{p}{(}\PYG{n}{mem\PYGZus{}read}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{mem\PYGZus{}write}\PYG{p}{(}\PYG{n}{mem\PYGZus{}write}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{branch}\PYG{p}{(}\PYG{n}{branch}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{alu\PYGZus{}control}\PYG{p}{(}\PYG{n}{alu\PYGZus{}control}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Estágio 3: Execution}
+\PYG{+w}{    }\PYG{n}{ex\PYGZus{}stage}\PYG{+w}{ }\PYG{n}{stage\PYGZus{}ex}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{pc}\PYG{p}{(}\PYG{n}{pc}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data1}\PYG{p}{(}\PYG{n}{read\PYGZus{}data1}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data2}\PYG{p}{(}\PYG{n}{read\PYGZus{}data2}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{imm}\PYG{p}{(}\PYG{n}{imm}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{alu\PYGZus{}src}\PYG{p}{(}\PYG{n}{alu\PYGZus{}src}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{alu\PYGZus{}control}\PYG{p}{(}\PYG{n}{alu\PYGZus{}control}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{alu\PYGZus{}result}\PYG{p}{(}\PYG{n}{alu\PYGZus{}result}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{zero}\PYG{p}{(}\PYG{n}{zero}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{pc\PYGZus{}target}\PYG{p}{(}\PYG{n}{pc\PYGZus{}target}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Estágio 4: Memory Unit}
+\PYG{+w}{    }\PYG{n}{mem\PYGZus{}stage}\PYG{+w}{ }\PYG{n}{stage\PYGZus{}mem}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{clk}\PYG{p}{(}\PYG{n}{clk}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{mem\PYGZus{}read}\PYG{p}{(}\PYG{n}{mem\PYGZus{}read}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{mem\PYGZus{}write}\PYG{p}{(}\PYG{n}{mem\PYGZus{}write}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{alu\PYGZus{}result}\PYG{p}{(}\PYG{n}{alu\PYGZus{}result}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{write\PYGZus{}data}\PYG{p}{(}\PYG{n}{read\PYGZus{}data2}\PYG{p}{),}\PYG{+w}{ }\PYG{c+c1}{// O dado a ser salvo é sempre oriundo de RS2}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data}\PYG{p}{(}\PYG{n}{read\PYGZus{}data}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{c+c1}{// Estágio 5: Write Back}
+\PYG{+w}{    }\PYG{n}{wb\PYGZus{}stage}\PYG{+w}{ }\PYG{n}{stage\PYGZus{}wb}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{p}{(}\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{alu\PYGZus{}result}\PYG{p}{(}\PYG{n}{alu\PYGZus{}result}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data}\PYG{p}{(}\PYG{n}{read\PYGZus{}data}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{(}\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{k}{endmodule}
+\end{MintedVerbatim}

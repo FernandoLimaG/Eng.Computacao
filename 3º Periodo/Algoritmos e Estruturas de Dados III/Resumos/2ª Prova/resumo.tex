@@ -1,0 +1,59 @@
+\documentclass[a4paper,titlepage,12pt]{article}
+
+\usepackage{xcolor}
+\usepackage{minted}
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage{bytefield}
+\usepackage[portuguese]{babel}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+
+% Configs
+\graphicspath{ {./img/}{./../../../../} }
+\newcommand{\sectionbreak}{\clearpage}
+\setminted{
+    linenos,
+    frame=single,
+    breaklines,
+    fontsize=\small
+}
+
+\title{
+Algoritmos e Estruturas de Dados III\\\Large{Compressão e Casamento de Padrões}
+\\[1.5em]
+\centering
+\includegraphics[scale=1]{puc}
+}
+\author{Fernando de Lima Gonçalves}
+\date{Belo Horizonte\\2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Compressão}
+\subsection{RLE e Métodos Estatísticos}
+\begin{itemize}
+    \item\textbf{RLE:} Reduz o tamanho de sequências de símbolos repetidos os substituindo pela quantidade de ocorrencias seguido pelo simbolo.
+    \item\textbf{Shannon-Fano:} Constroi uma arvore binaria \textit{top-down} baseada na frequencia ou probabilidade dos caracteres 
+        sendo onde cada no representa a soma de todos simbolos do no e a raiz a soma de todos.
+\end{itemize}
+
+\subsection{Métodos Dicionário}
+
+\section{Casamento de Padrões}
+\subsection{Força Bruta}
+
+\subsection{KMP}
+
+\subsection{Boyer-Moore}
+
+\subsection{Shift-AND}
+
+\subsection{Rabin-Karp}
+
+\subsection{Aho Corasick}
+
+\subsection{Levenshtein}
+\end{document}

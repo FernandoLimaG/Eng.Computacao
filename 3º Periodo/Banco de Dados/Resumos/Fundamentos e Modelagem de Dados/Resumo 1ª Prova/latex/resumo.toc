@@ -1,0 +1,26 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {section}{\numberline {1}U1 - Fundamentos de Banco de Dados}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Banco de Dados}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Sistema Gerenciador de Banco de Dados - SGBD}{2}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}Sistema Isolado de Arquivos vs. Banco de Dados}{2}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Armazenamento Isolado de Dados - Sistema de Arquivos}{2}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Banco de Dados}{2}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.3}Superioridade do Banco de Dados}{2}{subsubsection.1.3.3}%
+\contentsline {section}{\numberline {2}U2 - Modelagem de Dados}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Conceitos}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Modelo de Entidades-Relacionamentos}{3}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Entidades}{3}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Atributos}{4}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Tipos de Atributos}{4}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Atributo Chave}{5}{subsubsection.2.2.4}%
+\contentsline {subsubsection}{\numberline {2.2.5}Relacionamentos}{5}{subsubsection.2.2.5}%
+\contentsline {subsubsection}{\numberline {2.2.6}Cardinalidade}{5}{subsubsection.2.2.6}%
+\contentsline {subsubsection}{\numberline {2.2.7}Relacionamentos Recursivos}{6}{subsubsection.2.2.7}%
+\contentsline {subsubsection}{\numberline {2.2.8}Conceitos Avançados do M.E.R}{6}{subsubsection.2.2.8}%
+\contentsline {subsubsection}{\numberline {2.2.9}Entidades Fracas}{6}{subsubsection.2.2.9}%
+\contentsline {subsubsection}{\numberline {2.2.10}Grau de Relacionamento: Binários e Ternários}{7}{subsubsection.2.2.10}%
+\contentsline {subsubsection}{\numberline {2.2.11}MER Estendido: Generalização e Especialização}{8}{subsubsection.2.2.11}%
+\contentsline {section}{\numberline {3}U3 - Modelo Relacional}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Origem}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Relação: Partes e Propriedades}{11}{subsection.3.2}%
+\contentsline {section}{\numberline {4}U4 - Normalização}{11}{section.4}%

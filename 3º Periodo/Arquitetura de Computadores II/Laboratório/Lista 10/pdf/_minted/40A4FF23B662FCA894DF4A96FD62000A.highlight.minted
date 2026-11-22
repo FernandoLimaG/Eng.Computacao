@@ -1,0 +1,38 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// id\PYGZus{}stage.v \PYGZhy{} Módulo do Estágio de Decodificação}
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{id\PYGZus{}stage}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{clk}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{reg\PYGZus{}write\PYGZus{}wb}\PYG{p}{,}\PYG{+w}{ }\PYG{c+c1}{// Vem do estágio WB}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{4}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{  }\PYG{n}{rd\PYGZus{}wb}\PYG{p}{,}\PYG{+w}{        }\PYG{c+c1}{// Vem do estágio WB}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{,}\PYG{c+c1}{// Vem do estágio WB}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data2}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{imm}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{4}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{  }\PYG{n}{rd}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{2}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{  }\PYG{n}{funct3}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{funct7\PYGZus{}5}\PYG{p}{,}\PYG{+w}{     }\PYG{c+c1}{// Bit 30 da instrução (sub/sra)}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{6}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{  }\PYG{n}{opcode}
+\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{opcode}\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{[}\PYG{l+m+mh}{6}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{];}
+\PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{funct3}\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{[}\PYG{l+m+mh}{14}\PYG{o}{:}\PYG{l+m+mh}{12}\PYG{p}{];}
+\PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{funct7\PYGZus{}5}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{[}\PYG{l+m+mh}{30}\PYG{p}{];}
+\PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{rd}\PYG{+w}{       }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{[}\PYG{l+m+mh}{11}\PYG{o}{:}\PYG{l+m+mh}{7}\PYG{p}{];}
+
+\PYG{+w}{    }\PYG{n}{register\PYGZus{}file}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}file}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{clk}\PYG{p}{(}\PYG{n}{clk}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{reg\PYGZus{}write}\PYG{p}{(}\PYG{n}{reg\PYGZus{}write\PYGZus{}wb}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{rs1}\PYG{p}{(}\PYG{n}{instruction}\PYG{p}{[}\PYG{l+m+mh}{19}\PYG{o}{:}\PYG{l+m+mh}{15}\PYG{p}{]),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{rs2}\PYG{p}{(}\PYG{n}{instruction}\PYG{p}{[}\PYG{l+m+mh}{24}\PYG{o}{:}\PYG{l+m+mh}{20}\PYG{p}{]),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{rd}\PYG{p}{(}\PYG{n}{rd\PYGZus{}wb}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{write\PYGZus{}data}\PYG{p}{(}\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data1}\PYG{p}{(}\PYG{n}{read\PYGZus{}data1}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{read\PYGZus{}data2}\PYG{p}{(}\PYG{n}{read\PYGZus{}data2}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{n}{imm\PYGZus{}gen}\PYG{+w}{ }\PYG{n}{i\PYGZus{}gen}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{inst}\PYG{p}{(}\PYG{n}{instruction}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{imm}\PYG{p}{(}\PYG{n}{imm}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+\PYG{k}{endmodule}
+\end{MintedVerbatim}

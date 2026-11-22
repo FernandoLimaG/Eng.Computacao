@@ -1,0 +1,58 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// control\PYGZus{}unit.v}
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{control\PYGZus{}unit}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{6}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{opcode}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{2}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{funct3}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{       }\PYG{n}{funct7\PYGZus{}5}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{        }\PYG{n}{alu\PYGZus{}src}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{        }\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{        }\PYG{n}{reg\PYGZus{}write}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{        }\PYG{n}{mem\PYGZus{}read}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{        }\PYG{n}{mem\PYGZus{}write}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{        }\PYG{n}{branch}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{  }\PYG{p}{[}\PYG{l+m+mh}{3}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}control}
+\PYG{p}{);}
+\PYG{+w}{    }\PYG{k}{always}\PYG{+w}{ }\PYG{p}{@(}\PYG{o}{*}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{begin}
+\PYG{+w}{        }\PYG{c+c1}{// Padrões Default}
+\PYG{+w}{        }\PYG{n}{alu\PYGZus{}src}\PYG{+w}{     }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{+w}{  }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{mem\PYGZus{}read}\PYG{+w}{    }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{mem\PYGZus{}write}\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{branch}\PYG{+w}{      }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0000}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{k}{case}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{opcode}\PYG{p}{)}
+\PYG{+w}{            }\PYG{l+m+mh}{7}\PYG{l+m+mb}{\PYGZsq{}b0110011}\PYG{o}{:}\PYG{+w}{ }\PYG{k}{begin}\PYG{+w}{ }\PYG{c+c1}{// Tipo\PYGZhy{}R (ADD, SUB, AND, OR)}
+\PYG{+w}{                }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b01}\PYG{p}{;}
+\PYG{+w}{                }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funct3}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mh}{3}\PYG{l+m+mb}{\PYGZsq{}b000}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funct7\PYGZus{}5}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0001}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// SUB ou ADD}
+\PYG{+w}{                }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funct3}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mh}{3}\PYG{l+m+mb}{\PYGZsq{}b111}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0010}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// AND}
+\PYG{+w}{                }\PYG{k}{else}\PYG{+w}{ }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{funct3}\PYG{+w}{ }\PYG{o}{==}\PYG{+w}{ }\PYG{l+m+mh}{3}\PYG{l+m+mb}{\PYGZsq{}b110}\PYG{p}{)}
+\PYG{+w}{                    }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0011}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// OR}
+\PYG{+w}{            }\PYG{k}{end}
+\PYG{+w}{            }
+\PYG{+w}{            }\PYG{l+m+mh}{7}\PYG{l+m+mb}{\PYGZsq{}b0000011}\PYG{o}{:}\PYG{+w}{ }\PYG{k}{begin}\PYG{+w}{ }\PYG{c+c1}{// LW (Tipo\PYGZhy{}I)}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}src}\PYG{+w}{    }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{reg\PYGZus{}write}\PYG{+w}{  }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{mem\PYGZus{}read}\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// ADD para cálculo de endereço}
+\PYG{+w}{            }\PYG{k}{end}
+
+\PYG{+w}{            }\PYG{l+m+mh}{7}\PYG{l+m+mb}{\PYGZsq{}b0100011}\PYG{o}{:}\PYG{+w}{ }\PYG{k}{begin}\PYG{+w}{ }\PYG{c+c1}{// SW (Tipo\PYGZhy{}S)}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}src}\PYG{+w}{     }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{mem\PYGZus{}write}\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0000}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// ADD para cálculo de endereço}
+\PYG{+w}{            }\PYG{k}{end}
+
+\PYG{+w}{            }\PYG{l+m+mh}{7}\PYG{l+m+mb}{\PYGZsq{}b1100011}\PYG{o}{:}\PYG{+w}{ }\PYG{k}{begin}\PYG{+w}{ }\PYG{c+c1}{// BEQ (Tipo\PYGZhy{}B)}
+\PYG{+w}{                }\PYG{n}{branch}\PYG{+w}{      }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{l+m+mb}{\PYGZsq{}b1}\PYG{p}{;}
+\PYG{+w}{                }\PYG{n}{alu\PYGZus{}control}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{4}\PYG{l+m+mb}{\PYGZsq{}b0001}\PYG{p}{;}\PYG{+w}{ }\PYG{c+c1}{// SUB para comparação de igualdade}
+\PYG{+w}{            }\PYG{k}{end}
+\PYG{+w}{            }\PYG{k}{default}\PYG{o}{:}\PYG{+w}{ }\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{endcase}
+\PYG{+w}{    }\PYG{k}{end}
+\PYG{k}{endmodule}
+\end{MintedVerbatim}

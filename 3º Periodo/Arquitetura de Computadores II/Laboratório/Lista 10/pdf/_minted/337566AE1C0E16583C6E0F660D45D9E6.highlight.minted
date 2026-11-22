@@ -1,0 +1,67 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{n+no}{`timescale}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{n}{ns}\PYG{o}{/}\PYG{l+m+mh}{1}\PYG{n}{ps}
+
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{tb\PYGZus{}riscv\PYGZus{}top}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{clk}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{reg}\PYG{+w}{ }\PYG{n}{reset}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n}{riscv\PYGZus{}top}\PYG{+w}{ }\PYG{n}{dut}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{clk}\PYG{p}{(}\PYG{n}{clk}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{reset}\PYG{p}{(}\PYG{n}{reset}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+
+\PYG{+w}{    }\PYG{k}{initial}\PYG{+w}{ }\PYG{n}{clk}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{always}\PYG{+w}{ }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{5}\PYG{+w}{ }\PYG{n}{clk}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{o}{\PYGZti{}}\PYG{n}{clk}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{initial}\PYG{+w}{ }\PYG{k}{begin}
+\PYG{+w}{        }\PYG{n}{\PYGZdl{}dumpfile}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}tb\PYGZus{}riscv\PYGZus{}top.vcd\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n}{\PYGZdl{}dumpvars}\PYG{p}{(}\PYG{l+m+mh}{0}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{tb\PYGZus{}riscv\PYGZus{}top}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== TESTE RISC\PYGZhy{}V TOP ===\PYGZdq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}monitor}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}T=\PYGZpc{}0t | PC=\PYGZpc{}d | Inst=\PYGZpc{}h | ALU=\PYGZpc{}d | MemRead=\PYGZpc{}b | MemWrite=\PYGZpc{}b | WB=\PYGZpc{}d\PYGZdq{}}\PYG{p}{,}
+\PYG{+w}{                 }\PYG{n+nb}{\PYGZdl{}time}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{pc}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{instruction}\PYG{p}{,}
+\PYG{+w}{                 }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{alu\PYGZus{}result}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{mem\PYGZus{}read}\PYG{p}{,}
+\PYG{+w}{                 }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{mem\PYGZus{}write}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{n}{reset}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{1}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Inicializacao dos registradores}
+\PYG{+w}{        }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{stage\PYGZus{}id}\PYG{p}{.}\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n}{regs}\PYG{p}{[}\PYG{l+m+mh}{1}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d4}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{stage\PYGZus{}id}\PYG{p}{.}\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n}{regs}\PYG{p}{[}\PYG{l+m+mh}{2}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d8}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// Inicializacao da memoria de dados}
+\PYG{+w}{        }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{stage\PYGZus{}mem}\PYG{p}{.}\PYG{n}{dmem}\PYG{p}{[}\PYG{l+m+mh}{4}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d99}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{2}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reset}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{l+m+mh}{0}\PYG{p}{;}
+
+\PYG{+w}{        }\PYG{c+c1}{// ADD x3, x1, x2}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{4}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== RESULTADO ADD ===\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}x3 = \PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{stage\PYGZus{}id}\PYG{p}{.}\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n}{regs}\PYG{p}{[}\PYG{l+m+mh}{3}\PYG{p}{]);}
+
+\PYG{+w}{        }\PYG{c+c1}{// LW x4, 4(x3)}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== RESULTADO LW ===\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}x4 = \PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{stage\PYGZus{}id}\PYG{p}{.}\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n}{regs}\PYG{p}{[}\PYG{l+m+mh}{4}\PYG{p}{]);}
+
+\PYG{+w}{        }\PYG{c+c1}{// SW x4, 8(x3)}
+\PYG{+w}{        }\PYG{p}{\PYGZsh{}}\PYG{l+m+mh}{10}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}=== RESULTADO SW ===\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Memoria[20] = \PYGZpc{}d\PYGZdq{}}\PYG{p}{,}\PYG{+w}{ }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{stage\PYGZus{}mem}\PYG{p}{.}\PYG{n}{dmem}\PYG{p}{[}\PYG{l+m+mh}{5}\PYG{p}{]);}
+
+\PYG{+w}{        }\PYG{c+c1}{// Verificacao final}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{dut}\PYG{p}{.}\PYG{n}{stage\PYGZus{}id}\PYG{p}{.}\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n}{regs}\PYG{p}{[}\PYG{l+m+mh}{3}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{===}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d12}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}
+\PYG{+w}{            }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{stage\PYGZus{}id}\PYG{p}{.}\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n}{regs}\PYG{p}{[}\PYG{l+m+mh}{4}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{===}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d99}\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}
+\PYG{+w}{            }\PYG{n}{dut}\PYG{p}{.}\PYG{n}{stage\PYGZus{}mem}\PYG{p}{.}\PYG{n}{dmem}\PYG{p}{[}\PYG{l+m+mh}{5}\PYG{p}{]}\PYG{+w}{ }\PYG{o}{===}\PYG{+w}{ }\PYG{l+m+mh}{32}\PYG{l+m+mi}{\PYGZsq{}d99}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}TESTE INTEGRADO: PASS\PYGZdq{}}\PYG{p}{);}
+\PYG{+w}{        }\PYG{k}{else}
+\PYG{+w}{            }\PYG{n+nb}{\PYGZdl{}display}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}TESTE INTEGRADO: FAIL\PYGZdq{}}\PYG{p}{);}
+
+\PYG{+w}{        }\PYG{n+nb}{\PYGZdl{}finish}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}
+
+\PYG{k}{endmodule}
+\end{MintedVerbatim}

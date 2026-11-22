@@ -1,0 +1,12 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// wb\PYGZus{}stage.v}
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{wb\PYGZus{}stage}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}result}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{write\PYGZus{}data\PYGZus{}wb}
+\PYG{p}{);}
+\PYG{+w}{    }\PYG{c+c1}{// Mux de seleção final}
+\PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{mem\PYGZus{}to\PYGZus{}reg}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{alu\PYGZus{}result}\PYG{p}{;}
+\PYG{k}{endmodule}
+\end{MintedVerbatim}

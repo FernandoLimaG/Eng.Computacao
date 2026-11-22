@@ -1,0 +1,53 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public}\PYG{+w}{ }\PYG{k+kd}{class} \PYG{n+nc}{id\PYGZus{}stage}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{clk}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}write\PYGZus{}wb}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{rd\PYGZus{}wb}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{read\PYGZus{}data2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{imm}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{rd}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{funct3}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{boolean}\PYG{+w}{ }\PYG{n}{funct7\PYGZus{}5}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{int}\PYG{+w}{ }\PYG{n}{opcode}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{n}{register\PYGZus{}file}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}file}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{register\PYGZus{}file}\PYG{p}{();}
+\PYG{+w}{    }\PYG{n}{imm\PYGZus{}gen}\PYG{+w}{ }\PYG{n}{i\PYGZus{}gen}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{k}{new}\PYG{+w}{ }\PYG{n}{imm\PYGZus{}gen}\PYG{p}{();}
+
+\PYG{+w}{    }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{update}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{opcode}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{instruction}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{l+m+mh}{0x7F}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{funct3}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{instruction}\PYG{+w}{ }\PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{12}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{l+m+mh}{0x7}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{funct7\PYGZus{}5}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{((}\PYG{n}{instruction}\PYG{+w}{ }\PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{30}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{l+m+mh}{0x1}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{!=}\PYG{+w}{ }\PYG{l+m+mi}{0}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{rd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{instruction}\PYG{+w}{ }\PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{7}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{l+m+mh}{0x1F}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{update\PYGZus{}reg\PYGZus{}file}\PYG{p}{();}
+\PYG{+w}{        }\PYG{n}{update\PYGZus{}imm\PYGZus{}gen}\PYG{p}{();}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{update\PYGZus{}reg\PYGZus{}file}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{clk}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{clk}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{reg\PYGZus{}write}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}write\PYGZus{}wb}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{rs1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{instruction}\PYG{+w}{ }\PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{15}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{l+m+mh}{0x1F}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{rs2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{instruction}\PYG{+w}{ }\PYG{o}{\PYGZgt{}\PYGZgt{}\PYGZgt{}}\PYG{+w}{ }\PYG{l+m+mi}{20}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{\PYGZam{}}\PYG{+w}{ }\PYG{l+m+mh}{0x1F}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{rd}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{rd\PYGZus{}wb}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{write\PYGZus{}data}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{write\PYGZus{}data\PYGZus{}wb}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{update}\PYG{p}{();}
+\PYG{+w}{        }\PYG{n}{read\PYGZus{}data1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{read\PYGZus{}data1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{read\PYGZus{}data2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{read\PYGZus{}data2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{update\PYGZus{}imm\PYGZus{}gen}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{i\PYGZus{}gen}\PYG{p}{.}\PYG{n+na}{inst}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{instruction}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{i\PYGZus{}gen}\PYG{p}{.}\PYG{n+na}{update}\PYG{p}{();}
+\PYG{+w}{        }\PYG{n}{imm}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{i\PYGZus{}gen}\PYG{p}{.}\PYG{n+na}{imm}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+
+\PYG{+w}{    }\PYG{k+kt}{void}\PYG{+w}{ }\PYG{n+nf}{posedge\PYGZus{}clk}\PYG{p}{()}\PYG{+w}{ }\PYG{p}{\PYGZob{}}
+\PYG{+w}{        }\PYG{n}{update}\PYG{p}{();}
+\PYG{+w}{        }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{posedge\PYGZus{}clk}\PYG{p}{();}
+\PYG{+w}{        }\PYG{n}{read\PYGZus{}data1}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{read\PYGZus{}data1}\PYG{p}{;}
+\PYG{+w}{        }\PYG{n}{read\PYGZus{}data2}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{reg\PYGZus{}file}\PYG{p}{.}\PYG{n+na}{read\PYGZus{}data2}\PYG{p}{;}
+\PYG{+w}{    }\PYG{p}{\PYGZcb{}}
+\PYG{p}{\PYGZcb{}}
+\end{MintedVerbatim}

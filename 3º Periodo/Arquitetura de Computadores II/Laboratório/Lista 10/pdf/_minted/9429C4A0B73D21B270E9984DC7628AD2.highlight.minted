@@ -1,0 +1,30 @@
+\begin{MintedVerbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{// if\PYGZus{}stage.v \PYGZhy{} Módulo de Busca}
+\PYG{k}{module}\PYG{+w}{ }\PYG{n}{if\PYGZus{}stage}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{clk}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{reset}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{        }\PYG{n}{pc\PYGZus{}src}\PYG{p}{,}\PYG{+w}{       }\PYG{c+c1}{// Seletor do próximo PC (0 = PC+4, 1 = PC\PYGZus{}target)}
+\PYG{+w}{    }\PYG{k}{input}\PYG{+w}{  }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}target}\PYG{p}{,}\PYG{+w}{    }\PYG{c+c1}{// Destino do desvio (Branch)}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{reg}\PYG{+w}{  }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pc}\PYG{p}{,}
+\PYG{+w}{    }\PYG{k}{output}\PYG{+w}{ }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{instruction}
+\PYG{p}{);}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}next}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k+kt}{wire}\PYG{+w}{ }\PYG{p}{[}\PYG{l+m+mh}{31}\PYG{o}{:}\PYG{l+m+mh}{0}\PYG{p}{]}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}plus\PYGZus{}4}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}plus\PYGZus{}4}\PYG{+w}{ }\PYG{o}{=}\PYG{+w}{ }\PYG{n}{pc}\PYG{+w}{ }\PYG{o}{+}\PYG{+w}{ }\PYG{l+m+mh}{4}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{assign}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}next}\PYG{+w}{   }\PYG{o}{=}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{pc\PYGZus{}src}\PYG{p}{)}\PYG{+w}{ }\PYG{o}{?}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}target}\PYG{+w}{ }\PYG{o}{:}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}plus\PYGZus{}4}\PYG{p}{;}
+
+\PYG{+w}{    }\PYG{k}{always}\PYG{+w}{ }\PYG{p}{@(}\PYG{k}{posedge}\PYG{+w}{ }\PYG{n}{clk}\PYG{+w}{ }\PYG{k}{or}\PYG{+w}{ }\PYG{k}{posedge}\PYG{+w}{ }\PYG{n}{reset}\PYG{p}{)}\PYG{+w}{ }\PYG{k}{begin}
+\PYG{+w}{        }\PYG{k}{if}\PYG{+w}{ }\PYG{p}{(}\PYG{n}{reset}\PYG{p}{)}
+\PYG{+w}{            }\PYG{n}{pc}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{l+m+mh}{32\PYGZsq{}h00000000}\PYG{p}{;}
+\PYG{+w}{        }\PYG{k}{else}
+\PYG{+w}{            }\PYG{n}{pc}\PYG{+w}{ }\PYG{o}{\PYGZlt{}=}\PYG{+w}{ }\PYG{n}{pc\PYGZus{}next}\PYG{p}{;}
+\PYG{+w}{    }\PYG{k}{end}
+
+\PYG{+w}{    }\PYG{c+c1}{// Instanciação da Memória de Instruções interna ao IF}
+\PYG{+w}{    }\PYG{n}{instruction\PYGZus{}memory}\PYG{+w}{ }\PYG{n}{imem}\PYG{+w}{ }\PYG{p}{(}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{address}\PYG{p}{(}\PYG{n}{pc}\PYG{p}{),}
+\PYG{+w}{        }\PYG{p}{.}\PYG{n}{instruction}\PYG{p}{(}\PYG{n}{instruction}\PYG{p}{)}
+\PYG{+w}{    }\PYG{p}{);}
+\PYG{k}{endmodule}
+\end{MintedVerbatim}

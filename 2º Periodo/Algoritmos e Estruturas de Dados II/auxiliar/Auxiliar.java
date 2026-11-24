@@ -45,8 +45,8 @@ public class Auxiliar
 
         do {
             cap = lerInt("Capacidade do vetor: ",sc);
-            if (cap <= 0) System.out.println("Capacidade inválida, tente novamente\n");
-        } while (cap <= 0);
+            if (cap < 2) System.out.println("Capacidade inválida - A capacidade deve ser MAIOR que 2 (dois).\nTente novamente\n");
+        } while (cap < 2);
 
         v = new int[cap];
         for (int i = 0; i < v.length; i++) v[i] = lerInt((i+1) + "º elemento: ",sc);

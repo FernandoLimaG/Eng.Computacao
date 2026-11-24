@@ -1,0 +1,8 @@
+\babel@toc {portuguese}{}\relax 
+\contentsline {section}{\numberline {1}Material de Estudo RV32I}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Revisão}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Respostas}{2}{subsection.1.2}%
+\contentsline {section}{\numberline {2}Discussões - AC2}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Revisão}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Respostas}{2}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Referências}{2}{section.3}%

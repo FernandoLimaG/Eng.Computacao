@@ -1,0 +1,61 @@
+\documentclass[12pt,a4paper,titlepage]{article}
+
+\usepackage{amsmath}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage[portuguese]{babel}
+\usepackage[colorlinks=true,allcolors=black]{hyperref}
+
+\graphicspath{ {./../../../../} }
+
+\newcommand{\sectionbreak}{\clearpage}
+\renewcommand{\arraystretch}{1.5}
+
+\title{Transformada de Laplace Inversa}
+\author{
+    \includegraphics[scale=0.9]{puc}
+    \\[1.5em]
+    \\Fernando de Lima Gonçalves
+}
+\date{Belo Horizonte\\2026}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Revisão}
+\subsection{Transformadas de Laplace}
+\[
+    \boxed{L\{f\relax(t)\} = \int_{0}^\infty e^{-st}\,f\relax(t)\,dt \;,\; t \geq 0}
+\]
+
+\begin{center}
+    \begin{tabular}{||c|c||}
+        \hline
+        $f\relax(t)$ & $F\relax(s) = L\{f\relax(t)\}$\\
+        \hline\hline
+        1 & $\frac1 s$\\
+        \hline
+        $t^{n}$ & $\frac{n!}{s^{n+1}}$\\
+        \hline
+        $e^{a\,t}$ & $\frac{1}{s-a}$\\
+        \hline
+        $\cos(at)$ & $\frac{s}{s^{2}+a^{2}}$\\
+        \hline
+        $\sin(at)$ & $\frac{a}{s^{2}+a^{2}}$\\
+        \hline
+        $t^{n}\,e^{at}$ & $\frac{n!}{(s-a)^{n+1}}$\\
+        \hline\hline
+    \end{tabular}
+\end{center}
+
+\subsection{Frações Parciais}
+Definimos \textit{Frações Parciais} como uma resolução de integrais por meio de:
+
+\section{Exercícios}
+
+\section{Imagens}
+
+\section{Referências}
+
+\end{document}

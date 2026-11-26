@@ -31,7 +31,8 @@ out/
 *.fdb_latexmk
 *.synctex.gz
 *.out
-/_minted/
+_minted/
+tex_aux/
 
 # Bin
 **/bin/*

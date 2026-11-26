@@ -3,7 +3,9 @@
 ## Aluno
 
 - Fernando de Lima Gonçalves
-- Pontifícia Universidade Católica de Minas Gerais
+- Engenharia de Computação
+- PUC Minas
+- Belo Horizonte / MG
 
 ## Objetivo
 
@@ -54,14 +56,14 @@ java -cp bin Main
 ## Documentação
 
 A documentação será atualizada conforme disponibilidade e necessidade.
-Encontradas nas pastas *docs* espalhadas pelo projeto seguindo a lógica:
-- Documentação Geral do Repositório: Raíz
-- Documentação Específica de Subdiretório: Dentro do subdiretório
-- Documentação de Teste de Execução: Dentro do subdiretório referente a raiz de execução do programa relacionado
+Encontradas nas pastas *docs* do projeto, onde:
+- Documentação do Repositório: Raíz do repositório
+- Documentação de Disciplina: Diretório da matéria
+- Documentação de Execução: Diretório do código
 
 ## Mídias
-Serão adicionadas conforme disponibilidade e necessidade.
-Encontradas em pastas *img* e/ou *midia* pelo projeto seguindo a lógia:
-- Mídia Geral do Repositório: Raíz
-- Mídia Específica de Subdiretório: Dentro do subdiretório
-- Mídia de Teste de Execução: Dentro do subdiretório referente a raiz de execução do programa relacionado
+As mídias serão adicionadas conforme disponibilidade e necessidade.
+Encontradas em pastas *img* e/ou *midia* do projeto, onde:
+- Mídia Geral: Raíz do repositório
+- Mídia de Disciplina: Diretório da matéria
+- Mídia de Execução: Diretório do código

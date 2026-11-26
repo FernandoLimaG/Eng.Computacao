@@ -1,16 +1,16 @@
+CREATE TABLE tipo_profissional (
+	id_tipo VARCHAR(10) PRIMARY KEY,
+	descrição_tipo VARCHAR(300)
+);
+
 CREATE TABLE profissional (
 	matricula VARCHAR(10) PRIMARY KEY,
 	nome VARCHAR(150),
-	salario DECIMAL(10,2)
-);
+	salario DECIMAL(10,2),
+    id_tipo VARCHAR(10) NOT NULL,
 
-CREATE TABLE tipo_profissional (
-	id_tipo VARCHAR(10) PRIMARY KEY,
-	descrição_tipo VARCHAR(300),
-    matricula_profissional VARCHAR (10) NOT NULL,
-
-    FOREIGN KEY (matricula_profissional)
-        REFERENCES profissional (matricula)
+    FOREIGN KEY (id_tipo)
+        REFERENCES tipo_profissional (id_tipo)
 );
 
 CREATE TABLE telefones (
@@ -23,6 +23,26 @@ CREATE TABLE telefones (
 		REFERENCES profissional (matricula)
 );
 
+CREATE TABLE cerimonial (
+    endereco_cerimonial VARCHAR(500),
+    nome VARCHAR(150),
+    cnpj VARCHAR(14) PRIMARY KEY
+);
+
+CREATE TABLE formatura (
+	curso VARCHAR(100),
+	faculdade VARCHAR(100),
+	nome_chefe VARCHAR(150),
+	telefone_chefe VARCHAR(11),
+	forma_pgto VARCHAR(20),
+	valor DECIMAL(10,2),
+	id_formatura VARCHAR(10) PRIMARY KEY,
+    cnpj_cerimonial VARCHAR (14) NOT NULL,
+
+    FOREIGN KEY (cnpj_cerimonial)
+        REFERENCES cerimonial (cnpj)
+);
+
 CREATE TABLE evento (
 	id_evento VARCHAR(10) PRIMARY KEY,
 	descricao_evento VARCHAR(300),
@@ -30,7 +50,11 @@ CREATE TABLE evento (
 	hora_inicio TIME,
 	hora_fim TIME,
 	data_evento DATE,
-	local_evento VARCHAR(300)
+	local_evento VARCHAR(300),
+    id_formatura VARCHAR(10) NOT NULL,
+
+    FOREIGN KEY (id_formatura)
+        REFERENCES formatura (id_formatura)
 );
 
 CREATE TABLE escala (
@@ -45,20 +69,6 @@ CREATE TABLE escala (
 
 	FOREIGN KEY (id_evento)
 		REFERENCES evento (id_evento)
-);
-
-CREATE TABLE formatura (
-	curso VARCHAR(100),
-	faculdade VARCHAR(100),
-	nome_chefe VARCHAR(150),
-	telefone_chefe VARCHAR(11),
-	forma_pgto VARCHAR(20),
-	valor DECIMAL(10,2),
-	id_formatura VARCHAR(10) PRIMARY KEY,
-    id_evento VARCHAR (10) NOT NULL,
-
-    FOREIGN KEY (id_evento)
-        REFERENCES evento (id_evento)
 );
 
 CREATE TABLE aperitivo (
@@ -92,7 +102,11 @@ CREATE TABLE buffet (
 	cnpj VARCHAR(14) PRIMARY KEY,
 	nome VARCHAR(150),
 	endereco VARCHAR(500),
-	tempo_parceria INT
+	tempo_parceria INT,
+    cnpj_cerimonial VARCHAR(14) NOT NULL,
+
+    FOREIGN KEY (cnpj_cerimonial)
+        REFERENCES cerimonial (cnpj)
 );
 
 CREATE TABLE cardapio_buffet (
@@ -106,18 +120,4 @@ CREATE TABLE cardapio_buffet (
 	
 	FOREIGN KEY (id_cardapio)
 		REFERENCES cardapio (id_cardapio)
-);
-
-CREATE TABLE cerimonial (
-    endereco_cerimonial VARCHAR(500),
-    nome VARCHAR(150),
-    cnpj VARCHAR(14) PRIMARY KEY,
-    cnpj_buffet VARCHAR(14) NOT NULL,
-    id_formatura VARCHAR (10) NOT NULL,
-
-    FOREIGN KEY (cnpj_buffet)
-        REFERENCES buffet (cnpj),
-
-    FOREIGN KEY (id_formatura)
-        REFERENCES formatura (id_formatura)
 );

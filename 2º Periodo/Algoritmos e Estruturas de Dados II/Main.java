@@ -41,8 +41,10 @@ public class Main
         } while (tipo < 0 || tipo > 2);
 
         if (tipo == 0) return;
-        if (tipo == 1) vetor = Auxiliar.novoVetor(sc);
-        else vetor = Auxiliar.novoVetor();
+        if (tipo == 1) {
+            System.out.println();
+            vetor = Auxiliar.novoVetor(sc);
+        } else vetor = Auxiliar.novoVetor();
 
         Ordenador sort = new Ordenador(vetor);
         System.out.println();

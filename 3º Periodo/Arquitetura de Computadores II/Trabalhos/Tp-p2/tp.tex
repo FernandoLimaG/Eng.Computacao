@@ -1,7 +1,8 @@
 \documentclass[12pt,a4paper,titlepage]{article}
 
+\usepackage{float}
 \usepackage{xcolor}
-\usepackage{amssymb}
+\usepackage{amsmath}
 \usepackage{titlesec}
 \usepackage{graphicx}
 \usepackage[portuguese]{babel}
@@ -11,9 +12,9 @@
 
 \newcommand{\sectionbreak}{\clearpage}
 
-\title{Lista Prova II}
+\title{Arquitetura de Computadores II\\Lista de Estudos -- Prova II}
 \author{
-    \includegraphics[scale=0.35]{puc}
+    \includegraphics[scale=0.30]{puc}
     \\[1.5em]
     \\Fernando de Lima Gonçalves
 }
@@ -26,30 +27,494 @@
 \section{Parte C - Múltipla escolha}
 \begin{table}[h]
     \centering
-    \caption{Gabarito}
-    \begin{tabular}{|c|c||c|c||c|c|}
+    \caption{Gabarito Múltipla escolha}
+    \begin{tabular}{|c|c|}
         \hline
-        \textbf{Questão} & \textbf{Resposta} &
-        \textbf{Questão} & \textbf{Resposta} &
         \textbf{Questão} & \textbf{Resposta} \\
         \hline
-        01 & D & 11 & A & 21 & C \\
-        02 & C & 12 & C & 22 & B \\
-        03 & A & 13 & D & 23 & B \\
-        04 & B & 14 & B & 24 & D \\
-        05 & A & 15 & A & 25 & A \\
-        06 & D & 16 & C & 26 & C \\
-        07 & C & 17 & A & 27 & A \\
-        08 & B & 18 & C & 28 & B \\
-        09 & B & 19 & D & 29 & A \\
-        10 & D & 20 & B & 30 & D \\
+        01 & D \\
+        \hline
+        02 & C \\
+        \hline
+        03 & A \\
+        \hline
+        04 & B \\
+        \hline
+        05 & A \\
+        \hline
+        06 & D \\
+        \hline
+        07 & C \\
+        \hline
+        08 & B \\
+        \hline
+        09 & B \\
+        \hline
+        10 & D \\
+        \hline
+        11 & A \\
+        \hline
+        12 & C \\
+        \hline
+        13 & D \\
+        \hline
+        14 & B \\
+        \hline
+        15 & A \\
         \hline
     \end{tabular}
-    \label{tab:gabarito}
+    \hspace{1cm}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Questão} & \textbf{Resposta} \\
+        \hline
+        16 & C \\
+        \hline
+        17 & A \\
+        \hline
+        18 & C \\
+        \hline
+        19 & D \\
+        \hline
+        20 & B \\
+        \hline
+        21 & C \\
+        \hline
+        22 & B \\
+        \hline
+        23 & B \\
+        \hline
+        24 & D \\
+        \hline
+        25 & A \\
+        \hline
+        26 & C \\
+        \hline
+        27 & A \\
+        \hline
+        28 & B \\
+        \hline
+        29 & A \\
+        \hline
+        30 & D \\
+        \hline
+    \end{tabular}
+    \label{gabarito_multipla_escolha}
 \end{table}
 
 \section{Parte D - Verdadeiro ou Falso}
+\begin{table}[h]
+    \centering
+    \caption{Gabarito Verdadeiro ou Falso}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Questão} & \textbf{Resposta} \\
+        \hline
+        01 & 0 \\
+        \hline
+        02 & 1 \\
+        \hline
+        03 & 1 \\
+        \hline
+        04 & 0 \\
+        \hline
+        05 & 1 \\
+        \hline
+        06 & 1 \\
+        \hline
+        07 & 0 \\
+        \hline
+        08 & 0 \\
+        \hline
+        09 & 1 \\
+        \hline
+        10 & 1 \\
+        \hline
+        11 & 1 \\
+        \hline
+        12 & 1 \\
+        \hline
+        13 & 0 \\
+        \hline
+        14 & 1 \\
+        \hline
+        15 & 0 \\
+        \hline
+        16 & 1 \\
+        \hline
+        17 & 1 \\
+        \hline
+        18 & 1 \\
+        \hline
+        19 & 0 \\
+        \hline
+        20 & 1 \\
+        \hline
+        21 & 0 \\
+        \hline
+        22 & 1 \\
+        \hline
+        23 & 0 \\
+        \hline
+        24 & 1 \\
+        \hline
+        25 & 0 \\
+        \hline
+        26 & 1 \\
+        \hline
+        27 & 0 \\
+        \hline
+    \end{tabular}
+    \hspace{1cm}
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Questão} & \textbf{Resposta} \\
+        \hline
+        28 & 1 \\
+        \hline
+        29 & 1 \\
+        \hline
+        30 & 0 \\
+        \hline
+        31 & 0 \\
+        \hline
+        32 & 1 \\
+        \hline
+        33 & 1 \\
+        \hline
+        34 & 1 \\
+        \hline
+        35 & 0 \\
+        \hline
+        36 & 1 \\
+        \hline
+        37 & 1 \\
+        \hline
+        38 & 1 \\
+        \hline
+        39 & 0 \\
+        \hline
+        40 & 1 \\
+        \hline
+        41 & 0 \\
+        \hline
+        42 & 0 \\
+        \hline
+        43 & 1 \\
+        \hline
+        44 & 0 \\
+        \hline
+        45 & 1 \\
+        \hline
+        46 & 0 \\
+        \hline
+        47 & 0 \\
+        \hline
+        48 & 1 \\
+        \hline
+        49 & 1 \\
+        \hline
+        50 & 0 \\
+        \hline
+        51 & 1 \\
+        \hline
+        52 & 1 \\
+        \hline
+        53 & 0 \\
+        \hline
+        54 & 0 \\
+        \hline
+    \end{tabular}
+    \label{gabarito_v_f}
+\end{table}
+
+Considerando questão 01 como MSB e questão 54 como LSB temos:
+\begin{center}
+    \fbox{\textbf{Binário:} 011011001111010111010101010110011101110100101001101100}
+
+    \vspace{0.5em}
+
+    \fbox{\textbf{Decimal:} 7.667.398.542.314.092}
+\end{center}
 
 \section{Parte E - Estudo Dirigido}
+\subsection{ISA e Assembly}
+\begin{itemize}
+    \item\textbf{E1:}
+        A manutenção dos campos rs1, rs2 e rd nas mesmas posições, nos formatos em que estão presentes, permite que a leitura do banco
+        de registradores ocorra simultaneamente à decodificação da instrução, sem precisar aguardar a identificação do opcode.
+        Isso reduz a necessidade de multiplexadores e simplifica as conexões do caminho de dados.
+        Além disso, manter o bit de sinal do imediato na posição 31 permite iniciar a extensão de sinal antes da identificação completa
+        do formato da instrução, reduzindo o caminho crítico do monociclo e simplificando o estágio ID do pipeline.
+
+    \item\textbf{E2:}
+        Os campos imm[10:5] e imm[4:1] do formato B ocupam as mesmas posições físicas dos respectivos campos do formato S.
+        No formato B, imm[12] corresponde ao bit de sinal da instrução, imm[11] ocupa a posição 7 e imm[0] é implicitamente zero.
+        Essa organização permite reutilizar grande parte das conexões físicas do formato S, evitando um deslocamento adicional do
+        imediato e reduzindo a necessidade de multiplexadores. Embora a codificação seja menos intuitiva para interpretação humana,
+        ela simplifica o gerador de imediato e reduz o custo de implementação do hardware.
+
+    \item\textbf{E3:}
+        O prólogo utiliza addi para reservar espaço na pilha e sw para salvar os registradores ra e s utilizados pela rotina.
+        Sem esse salvamento, a instrução jal que chama a função secundária sobrescreve ra com um novo endereço de retorno.
+        Ao executar ret, a função secundária retorna corretamente à rotina principal, mas o ret da rotina principal utiliza o
+        endereço sobrescrito, podendo provocar um laço infinito ou uma falha na execução.
+        Os registradores s são classificados como callee-saved e devem ser preservados pelas funções que os modificam.
+        Caso contrário, valores utilizados como índices ou acumuladores podem ser perdidos. O epílogo utiliza lw para restaurar
+        os registradores e addi para recuperar o valor original de sp, respeitando o alinhamento da pilha.
+
+    \item\textbf{E4:}
+        Na transposição realizada no próprio espaço de memória, basta percorrer os elementos acima ou abaixo da diagonal principal,
+        considerando, por exemplo, a condição $i < j$. Para uma matriz quadrada de ordem $n$, são necessárias
+        $\frac{n(n-1)}{2}$ trocas, enquanto a transposição para uma nova matriz exige $n^2$ cópias e espaço adicional em memória.
+        Para uma matriz $3 \times 3$, a transposição no lugar exige três trocas, seis instruções lw e seis instruções sw,
+        enquanto a transposição para uma nova matriz exige nove instruções lw e nove instruções sw.
+        A primeira abordagem utiliza registradores temporários para realizar as trocas, enquanto a segunda necessita manter
+        os endereços das duas matrizes. A redução dos acessos à memória e das iterações tende a reduzir o número total de instruções.
+\end{itemize}
+
+\subsection{Microarquitetura monociclo}
+\begin{itemize}
+    \item\textbf{E5:}
+        Uma instrução do tipo R, como add, não utiliza a memória de dados nem o imediato. Uma instrução lw não utiliza o segundo
+        operando do banco de registradores nem a lógica de desvio. Uma instrução sw não utiliza a escrita no banco de registradores,
+        enquanto beq não utiliza a memória de dados nem a escrita no banco. Por fim, jal não utiliza a memória de dados nem os
+        operandos lidos do banco de registradores.
+        No monociclo, o período de clock é determinado pela instrução de maior caminho crítico, normalmente lw, fazendo com que
+        instruções mais simples aguardem um período maior que o necessário. O pipeline reduz essa ineficiência ao permitir que
+        diferentes instruções utilizem simultaneamente diferentes blocos do caminho de dados.
+
+    \item\textbf{E6:}
+        Na instrução add t0, t0, t1, a leitura combinacional do banco de registradores disponibiliza os valores atuais de t0 e t1.
+        A ALU realiza a soma durante o ciclo, mas o novo valor de t0 somente é armazenado na borda ativa do clock, garantindo
+        que o cálculo utilize seu valor anterior.
+        Em Verilog, esse comportamento é representado pela atribuição não bloqueante, indicada pelo operador \texttt{<=},
+        nos blocos sequenciais. No pipeline, também é possível realizar a escrita no banco na primeira metade do ciclo e a
+        leitura na segunda metade, permitindo que uma instrução em ID obtenha o valor escrito por outra instrução em WB.
+
+    \item\textbf{E7:}
+        O valor X em uma tabela de sinais de controle representa uma condição don't care, indicando que determinado sinal pode
+        assumir 0 ou 1 sem modificar o resultado da instrução.
+        Em uma instrução sw, por exemplo, RegWrite permanece em 0, tornando irrelevante o valor de MemtoReg.
+        Analogamente, ALUSrc é irrelevante quando o resultado produzido pela ALU não é utilizado, dependendo da organização
+        do caminho de dados. Entretanto, em instruções como lw e sw, seu valor deve ser definido corretamente para calcular
+        o endereço de memória.
+        Essas condições permitem simplificações durante a síntese do circuito, mas podem provocar erros caso outros sinais
+        estejam incorretamente habilitados. Em Verilog, o valor X também pode representar um estado lógico desconhecido
+        durante a simulação.
+\end{itemize}
+
+\subsection{Verilog}
+\begin{itemize}
+    \item\textbf{E8:}
+        Para representar o paralelismo do hardware em uma linguagem sequencial, é necessário separar a avaliação da lógica
+        combinacional da atualização dos elementos sequenciais. Durante cada ciclo, os resultados intermediários são calculados
+        utilizando o estado atual do processador e armazenados temporariamente.
+        Somente ao final do ciclo são atualizados o PC, o banco de registradores e a memória de dados, quando habilitados.
+        Dessa forma, a ordem das atribuições deve respeitar as dependências combinacionais, sem permitir que uma atualização
+        prematura altere os valores utilizados no mesmo ciclo. Esse comportamento corresponde ao das atribuições não bloqueantes
+        utilizadas nos blocos sequenciais do Verilog.
+
+    \item\textbf{E9:}
+        Uma sequência de valores do PC igual a 0, 4, 8 e 0 pode representar tanto um laço válido quanto um erro de implementação.
+        Deve-se verificar o conteúdo da ROM de instruções, principalmente a instrução armazenada no endereço 8, identificando
+        se existe uma instrução jal ou um desvio condicional tomado cujo destino seja o endereço 0.
+        Nesse caso, um desvio relativo ao PC deve possuir deslocamento igual a -8.
+        Também devem ser analisados os sinais Branch, Jump e Zero, o imediato gerado, o reset e a seleção do próximo PC.
+        Testes isolados de incremento, reset e desvio permitem comparar os resultados obtidos com os valores esperados.
+
+    \item\textbf{E10:}
+        Um testbench que utiliza exclusivamente o comando \texttt{\$display} apresenta os resultados produzidos pelo módulo,
+        mas não verifica automaticamente sua corretude. Para testar a unidade de controle, deve-se utilizar uma tabela-verdade
+        que relacione cada opcode aos respectivos sinais de controle esperados.
+        O testbench deve percorrer os opcodes suportados, comparar os sinais produzidos com os valores esperados, desconsiderando
+        aqueles classificados como don't care, e contabilizar as divergências em um contador de erros.
+        Também devem ser testados opcodes inválidos ou não implementados, verificando se operações indevidas de escrita
+        são desabilitadas. Essa abordagem caracteriza um self-checking testbench.
+\end{itemize}
+
+\clearpage\subsection{Pipeline}
+\begin{itemize}
+    \item\textbf{E11:}
+        Para transformar um processador monociclo em um pipeline de cinco estágios, é necessário dividir o caminho de dados
+        nas etapas IF, ID, EX, MEM e WB, inserindo os registradores intermediários IF/ID, ID/EX, EX/MEM e MEM/WB.
+        Esses registradores armazenam os operandos, os resultados intermediários, o registrador de destino rd e os sinais
+        de controle de cada instrução. Como diversas instruções são executadas simultaneamente, os sinais de controle precisam
+        acompanhar suas respectivas instruções para serem utilizados nos estágios corretos, como MemWrite em MEM e RegWrite em WB.
+        Também devem ser acrescentados mecanismos de forwarding, detecção de conflitos, inserção de bolhas e descarte de instruções.
+
+    \item\textbf{E12:}
+        A sequência formada pelas instruções lw t2, 0(t0) e add a0, a0, t2 apresenta um conflito de dados do tipo load-use hazard,
+        pois o valor carregado por lw somente estará disponível ao final do estágio MEM, enquanto add necessita desse valor
+        no estágio EX. Mesmo com forwarding, é necessária a inserção de uma bolha no pipeline clássico de cinco estágios.
+
+        \begin{center}
+            \textbf{Sem reordenação}
+
+            \smallskip
+            \begin{tabular}{|l|*{8}{c|}}
+                \hline
+                Instrução & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+                \hline
+                lw t2, 0(t0)    & IF & ID & EX & MEM   & WB &     &     &    \\
+                add a0, a0, t2  &    & IF & ID & Stall & EX & MEM & WB  &    \\
+                addi t0, t0, 4  &    &    & IF & Stall & ID & EX  & MEM & WB \\
+                \hline
+            \end{tabular}
+        \end{center}
+
+        O compilador pode posicionar uma instrução independente, como addi t0, t0, 4, entre lw e add, ocupando o ciclo
+        anteriormente desperdiçado.
+
+        \begin{center}
+            \textbf{Com reordenação}
+
+            \smallskip
+            \begin{tabular}{|l|*{8}{c|}}
+                \hline
+                Instrução & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\
+                \hline
+                lw t2, 0(t0)    & IF & ID & EX & MEM & WB  &     &    & \\
+                addi t0, t0, 4  &    & IF & ID & EX  & MEM & WB  &    & \\
+                add a0, a0, t2  &    &    & IF & ID  & EX  & MEM & WB & \\
+                \hline
+            \end{tabular}
+        \end{center}
+
+        Essa reorganização reduz o CPI sem modificar a quantidade de instruções ou a semântica do programa.
+        Entretanto, deve-se respeitar as dependências de dados, evitando modificar t0 antes da leitura realizada por lw,
+        pois isso alteraria o endereço acessado na memória.
+
+    \item\textbf{E13:}
+        O aumento da quantidade de estágios do pipeline permite dividir o caminho crítico em etapas menores, possibilitando
+        a redução do período de clock e o aumento da frequência de operação.
+        Entretanto, pipelines mais profundos podem apresentar penalidades maiores em erros de predição de desvios, pois uma
+        quantidade maior de instruções especulativas pode precisar ser descartada.
+        Considerando a equação $T = \frac{I_c \times CPI}{f}$, o aumento da frequência somente melhora o desempenho quando
+        compensa o eventual aumento do CPI. Para um mesmo número de instruções, a razão $CPI/f$ determina o tempo de execução.
+        Eventos como branch-misses, disponibilizados pelo perf, permitem investigar a ocorrência de erros de predição.
+\end{itemize}
+
+\subsection{Avaliação de desempenho}
+\begin{itemize}
+    \item\textbf{E14:}
+        O código C é compilado diretamente para instruções de máquina, enquanto Python, considerando a implementação CPython,
+        executa bytecode por meio de um interpretador. Uma única operação em Python pode exigir diversas instruções de máquina,
+        aumentando significativamente $I_c$.
+        Java também apresenta custos associados à inicialização da JVM e à interpretação inicial do bytecode. Além disso,
+        diferenças nos acessos à memória e na execução de desvios podem influenciar o CPI.
+        Caso a busca seja repetida milhares de vezes no mesmo processo Java, o compilador JIT poderá converter o método
+        frequentemente executado em código de máquina otimizado, reduzindo $I_c$ e podendo melhorar o CPI.
+        Esse processo de aquecimento, denominado warm-up, pode aproximar o desempenho de Java ao de C, reduzindo a diferença
+        observada no experimento.
+
+    \item\textbf{E15:}
+        Quando o perf realiza a medição do programa inteiro, são contabilizadas tanto as instruções do algoritmo de busca
+        quanto aquelas relacionadas à leitura de arquivos, alocação de memória e inicialização do programa.
+        Como as instruções da busca representam menos de 1\% do total, as diferenças entre o melhor e o pior caso podem ser
+        mascaradas pelas demais operações e pelo ruído do sistema.
+        O grupo poderia concluir incorretamente que os dois casos apresentam desempenhos semelhantes, apesar de possuírem
+        complexidades distintas, respectivamente $\Theta(1)$ e $\Theta(n)$.
+        Para melhorar o experimento, deve-se carregar previamente os dados em memória, repetir a busca diversas vezes e
+        restringir a medição à região de interesse, utilizando ferramentas como Cachegrind e perf record para investigar
+        os eventos associados às funções.
+
+    \item\textbf{E16:}
+        Mesmo que dois compiladores produzam laços com a mesma quantidade de instruções por iteração, seus tempos de execução
+        podem apresentar diferenças decorrentes de características microarquiteturais.
+        O alinhamento das instruções pode influenciar a utilização da cache de instruções, enquanto o sentido e a organização
+        dos desvios podem alterar a eficiência da predição.
+        Além disso, determinados processadores realizam a macrofusão, combinando instruções de comparação e desvio em uma
+        única operação interna, sem modificar a quantidade de instruções arquiteturais.
+        Dependências de dados, variações na frequência de operação e interferências do sistema operacional também podem
+        modificar o tempo observado. Portanto, a igualdade de $I_c$ não implica necessariamente igualdade de CPI.
+
+    \item\textbf{E17:}
+        A média aritmética de tempos normalizados depende da máquina utilizada como referência, pois a normalização modifica
+        o peso relativo de cada benchmark. Considere duas máquinas A e B, com tempos de execução de 1 e 3 segundos para A
+        e 2 e 1 segundos para B.
+        Normalizando pela máquina A, as médias aritméticas são 1 e aproximadamente 1,167, favorecendo A.
+        Normalizando pela máquina B, as médias passam a ser 1,75 e 1, favorecendo B.
+        A média geométrica não apresenta esse problema, pois satisfaz a relação
+        $\frac{MG(A/R)}{MG(B/R)} = \frac{MG(A)}{MG(B)}$.
+        Dessa forma, o termo referente à máquina de referência é cancelado, mantendo a classificação relativa das máquinas
+        independentemente da normalização escolhida.
+\end{itemize}
+
+\subsection{Microcontroladores}
+\begin{itemize}
+    \item\textbf{E18:}
+        A arquitetura Harvard, utilizada pelos microcontroladores AVR, caracteriza-se pela separação das memórias e dos barramentos
+        destinados às instruções e aos dados. Essa organização permite realizar a busca da próxima instrução simultaneamente
+        à execução da instrução atual, caracterizando o pipeline descrito no datasheet.
+        Em um pipeline RISC-V de cinco estágios que utilizasse uma memória única com apenas uma porta de acesso, os estágios IF
+        e MEM poderiam disputar simultaneamente o mesmo recurso, caracterizando um conflito estrutural.
+        A arquitetura Harvard evita esse conflito ao disponibilizar caminhos independentes de acesso, de maneira equivalente
+        à separação das caches L1 de instruções e de dados em processadores modernos.
+
+    \item\textbf{E19:}
+        O consumo energético de um microcontrolador depende tanto da potência consumida quanto do tempo necessário para realizar
+        determinada atividade. O tempo ativo é dado por $T_{\mathrm{ativo}} = \frac{I_c \times CPI}{f}$.
+        A energia consumida durante um período de medição pode ser estimada por
+        $E = P_{\mathrm{ativo}} \times T_{\mathrm{ativo}} + P_{\mathrm{sono}} \times T_{\mathrm{sono}}$.
+        Um ESP32 operando a 240 MHz pode apresentar maior potência durante a execução, mas concluir o processamento mais rapidamente
+        e permanecer por mais tempo em modo de baixo consumo, estratégia denominada race to sleep.
+        Por outro lado, um ATtiny85 operando a 8 MHz pode apresentar menor potência instantânea, embora necessite de mais tempo
+        para executar determinadas tarefas. Também devem ser considerados os custos das transições entre modos de operação
+        e da comunicação Wi-Fi. Portanto, a comparação deve considerar a energia total consumida por medição, e não apenas o clock.
+
+    \item\textbf{E20:}
+        O SAP-1 possui uma arquitetura didática simplificada, com um conjunto reduzido de instruções, poucos registradores,
+        componentes discretos e ausência de pipeline.
+        O Intel 8080 é um microprocessador CISC de 8 bits integrado em um único chip, com maior variedade de instruções e
+        registradores, mas sem cache integrada ou pipeline nos moldes dos processadores modernos.
+        Um núcleo RISC-V atual utiliza uma ISA modular do tipo load/store, podendo incorporar pipelines, caches, predição de
+        desvios e execução superescalar, além de integrar outros componentes em um mesmo chip.
+        Essas diferenças são justificadas pelos objetivos de cada arquitetura e pela evolução da tecnologia de fabricação,
+        da quantidade de transistores disponíveis e da capacidade de memória. Entretanto, pipeline e cache constituem
+        decisões microarquiteturais, não exigências da ISA RISC-V.
+\end{itemize}
+
+\subsection{Integração entre temas}
+\begin{itemize}
+    \item\textbf{E21:}
+        A instrução lw t2, 8(sp) pertence ao formato I da ISA RV32I e possui código de máquina hexadecimal 0x00812383.
+        Seus campos correspondem a imm = 000000001000, rs1 = 00010 (sp), funct3 = 010, rd = 00111 (t2) e opcode = 0000011.
+        No estágio IF, o PC fornece o endereço da instrução à memória de instruções. No estágio ID, ocorre a decodificação,
+        a leitura de sp e a extensão de sinal do imediato. No estágio EX, a ALU calcula o endereço efetivo mediante a soma
+        do conteúdo de sp com o imediato 8. No estágio MEM, ocorre a leitura da palavra armazenada no endereço calculado e,
+        no estágio WB, o multiplexador MemtoReg seleciona o dado lido para escrita em t2.
+        Os sinais de controle correspondem a RegWrite = 1, ALUSrc = 1, MemRead = 1, MemWrite = 0, MemtoReg = 1, Branch = 0,
+        Jump = 0 e ALUOp = 00, considerando uma unidade de controle convencional.
+        Em Verilog, os módulos instruction\_memory, register\_file, imm\_gen, control\_unit e ex\_stage são responsáveis
+        pela busca, leitura dos registradores, geração do imediato, controle e cálculo do endereço, respectivamente.
+        Essas operações podem ser implementadas mediante atribuições assign ou blocos always combinacionais.
+        A memória de dados fornece a palavra armazenada no endereço calculado, enquanto a escrita no banco de registradores
+        ocorre em um bloco \texttt{always @(posedge clk)}, utilizando uma atribuição não bloqueante e condicionada a RegWrite.
+
+    \item\textbf{E22:}
+        Considerando a equação $T = \frac{I_c \times CPI}{f}$, o aumento da frequência de clock reduz proporcionalmente
+        o tempo de execução quando a quantidade de instruções e o CPI permanecem constantes.
+        Entretanto, frequências maiores podem exigir alterações microarquiteturais, como o aprofundamento do pipeline,
+        aumentando as penalidades decorrentes de conflitos e erros de predição.
+        Além disso, a memória principal não necessariamente acompanha o aumento da frequência do processador, fazendo com
+        que uma mesma latência de memória corresponda a uma quantidade maior de ciclos de clock.
+        De acordo com a Lei de Amdahl, a aceleração global é limitada pela parcela do programa efetivamente beneficiada
+        pela otimização.
+        Portanto, para avaliar o desempenho do programa da Lista V, é necessário considerar $I_c$, CPI, frequência efetiva
+        e hierarquia de memória, realizando medições repetidas, com resolução adequada e sob as mesmas condições experimentais.
+
+    \item\textbf{E23:}
+        O RISC-V possui uma ISA aberta e modular, permitindo que diferentes fabricantes desenvolvam processadores sem a
+        necessidade de pagamento de royalties pelo uso da ISA.
+        A base RV32I disponibiliza um conjunto fundamental de instruções inteiras, suficiente para a implementação de
+        processadores simples e de baixo custo, podendo ser complementada por extensões como M, F, C e V, conforme
+        as necessidades da aplicação.
+        Microcontroladores podem utilizar implementações monociclo ou pipelines curtos, priorizando o custo de implementação
+        e a eficiência energética. Processadores de alto desempenho podem utilizar pipelines mais complexos, execução
+        superescalar, execução fora de ordem, caches e mecanismos sofisticados de predição de desvios.
+        Dessa forma, a independência entre ISA e microarquitetura permite que processadores compatíveis com um mesmo
+        conjunto de instruções apresentem organizações internas, desempenhos e consumos energéticos distintos.
+\end{itemize}
 
 \end{document}

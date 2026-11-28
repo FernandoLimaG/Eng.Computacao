@@ -4,12 +4,14 @@
 \usepackage{minted}
 \usepackage{titlesec}
 \usepackage{graphicx}
+\usepackage{enumitem}
 \usepackage[portuguese]{babel}
 \usepackage[colorlinks=true,allcolors=black]{hyperref}
 
-\graphicspath{ {./img/}{./../der/}{./../relacional} }
+\graphicspath{ {./img/}{./../../der/}{./../../relacional} }
 
-\newcommand{\sql}{./../sql/}
+\newcommand{\sql}{./../../sql/}
+\newcommand{\pesquisa}{./../../sql/pesquisas/}
 \newcommand{\sectionbreak}{\clearpage}
 \setminted{
     linenos=true,
@@ -25,7 +27,7 @@
 
 \title{Trabalho Prático - Banco de Dados}
 \author{
-    \includegraphics[scale=0.28]{./../../../../puc.png}
+    \includegraphics[scale=0.28]{./../../../../../puc.png}
     \\[1.5em]
     \\Fernando de Lima Gonçalves
     \\Igor Luiz Santos de Lima
@@ -61,10 +63,25 @@
 \subsection{Banco de Dados}
 \inputminted{sql}{\sql ini.sql}
 
-\clearpage\subsection{Povoamento}
-\inputminted{sql}{\sql povoar_4_cerimoniais.sql}
-
-\clearpage\subsection{SELECT}
+\subsection{Pesquisas}
+\begin{enumerate}[label=\alph*)]
+    \item
+    \item 
+        Identificar os profissionais escalados por menos de 4 horas em eventos, ordenando-os pela quantidade de horas de alocação.
+        \inputminted{sql}{\pesquisa b.sql}
+    \item
+    \item
+    \item 
+        Identificar a quantidade de profissionais escalados para cada evento, ordenando os eventos pela demanda de mão de obra em ordem decrescente.
+        \inputminted{sql}{\pesquisa e.sql}
+    \item 
+        Identificar os cardápios cujo custo por pessoa seja inferior a R\$ 30,00.
+        \inputminted{sql}{\pesquisa f.sql}
+    \item
+    \item
+    \item
+    \item
+\end{enumerate}
 
 \clearpage\subsection{Índices}
 

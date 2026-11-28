@@ -1,5 +1,12 @@
 # Engenharia de Computação
 
+## Sobre o Repositório
+
+Repositório destinado à organização e ao versionamento de trabalhos, exercícios, projetos e materiais desenvolvidos ao longo da 
+graduação em Engenharia de Computação na PUC Minas.
+
+Tem como propósito consolidar os conhecimentos adquiridos, acompanhar a evolução acadêmica e facilitar a consulta aos conteúdos estudados.
+
 ## Aluno
 
 - Fernando de Lima Gonçalves
@@ -7,63 +14,66 @@
 - PUC Minas
 - Belo Horizonte / MG
 
-## Objetivo
-
-Repositório de trabalhos e atividades realizadas pelo aluno durante trajetória acadêmica afim de 
-fixar conhecimento adquirido além fornecer um acesso rápido a materiais do curso.
-
 ## Tecnologias
-- C
-- Ino
+- C/C++
 - Java
+- Assembly
 - LaTeX
-- Markdown
 
 ## Ambiente de Desenvolvimento
-- NeoVim via Terminal
+- Neovim via Terminal
 - VS Code
 - IntelliJ IDEA
 
 ## Diretórios
 
-Repositório possui caminhamento de subpastas padronizado por semestres letivos e disciplinas.
+O repositório segue uma estrutura hierárquica de diretórios, organizada por semestres letivos e suas respectivas disciplinas, 
+contemplando códigos-fonte, trabalhos, exercícios e materiais complementares.
 
-## Compilação e Execução dos Códigos via Terminal
+## Compilação e Execução via Terminal
 
 1. Clone o repositório:
-- Via HTTPS:
-```bash
-git clone https://github.com/FernandoLimaG/Eng.Computacao.git
-cd Eng.Computacao
-```
-- Via SSH:
-```bash
-git clone git@github.com:FernandoLimaG/Eng.Computacao.git
-cd Eng.Computacao
-```
-2. Navegar para o subdiretório desejado
 
-3. Compilar o código:
-> Para exemplificar o processo de compilação e execução, utilizaremos o subdiretório "Algoritmos e Estruturas de Dados II".
-```bash
-javac -d bin Main.java
-```
+    - Via HTTPS:
+    ```bash
+    git clone https://github.com/FernandoLimaG/Eng.Computacao.git
+    cd Eng.Computacao
+    ```
+    - Via SSH:
+    ```bash
+    git clone git@github.com:FernandoLimaG/Eng.Computacao.git
+    cd Eng.Computacao
+    ```
 
-4. Rodar o código:
-```bash
-java -cp bin Main
-```
-## Documentação
+2. Navegue até o subdiretório desejado.
 
-A documentação será atualizada conforme disponibilidade e necessidade.
-Encontradas nas pastas *docs* do projeto, onde:
-- Documentação do Repositório: Raíz do repositório
-- Documentação de Disciplina: Diretório da matéria
-- Documentação de Execução: Diretório do código
+3. Compile e execute o código de acordo com a linguagem:
 
-## Mídias
-As mídias serão adicionadas conforme disponibilidade e necessidade.
-Encontradas em pastas *img* e/ou *midia* do projeto, onde:
-- Mídia Geral: Raíz do repositório
-- Mídia de Disciplina: Diretório da matéria
-- Mídia de Execução: Diretório do código
+    - Java
+    ```bash
+    javac -d bin Main.java
+    ```
+
+    ```bash
+    java -cp bin Main
+    ```
+
+    - C (Makefile)
+    ```bash
+    make
+    ```
+
+    ```bash
+    ./bin/main
+    ```
+
+## Documentação e mídias
+
+Os materiais complementares são disponibilizados em diretórios específicos:
+
+- `docs/`: documentação, relatórios e materiais de referência.
+- `img/` e `midia/`: imagens, diagramas e demais recursos multimídia.
+
+Esses diretórios podem estar presentes na raiz do repositório, nas respectivas disciplinas ou nos projetos aos quais pertencem.
+
+Os conteúdos são adicionados e atualizados ao longo da graduação.
